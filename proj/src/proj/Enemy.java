@@ -18,7 +18,7 @@ public class Enemy extends GameObject
 	
 	int counter = 0;
 	
-	int katasa;
+	int Str;
 	
 	int type;
 	
@@ -45,7 +45,7 @@ public class Enemy extends GameObject
 		y = iy;
 		type = (int)(Math.random()+0.5);
 		active = true;			
-		katasa = 10;
+		Str = 1; //Str 1 = 2 Shot 
 		counter = 0;
 		boolean ishit = false;
 		shootnum = Level.getLevel();
@@ -56,9 +56,9 @@ public class Enemy extends GameObject
 	public void hit()
 	{
 		
-		katasa--;
+		Str--;
 		ishit = true;
-		if (katasa < 0)
+		if (Str < 0)
 		{
 			
 			switch(type)
