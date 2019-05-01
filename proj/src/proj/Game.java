@@ -18,7 +18,7 @@ public class Game extends JFrame
 	Game()
 	{
 		
-		super("Test Demo"); //Title
+		super("SPACEHUB"); //Title
 
 		
 		addWindowListener(new WindowAdapter() {

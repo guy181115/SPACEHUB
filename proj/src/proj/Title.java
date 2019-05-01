@@ -27,7 +27,7 @@ public class Title
 		g.setColor(Color.black);
 		count++;
 		g.setFont(titleFont);
-		g.drawString("Game",220,200);
+		g.drawString("SPACEHUB",150,200);
 
 		g.setFont(infoFont);
                  g.drawString("-Press space bar to start-",60,350);

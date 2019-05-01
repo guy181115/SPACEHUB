@@ -21,13 +21,15 @@ public class MyCanvas extends Canvas implements Runnable{
 	Title title;
 	Score score;
 	
-	
+	private volatile boolean running = true;
+        private volatile boolean paused = false;
+        private final Object pauseLock = new Object();
 	public int scene;
 	static final int SCENE_TITLE = 0;
 	
         static final int SCENE_GAMEMAIN = 1;
 	
-	public boolean paused;
+	
 	public boolean gameover;
 	int counter;
 	
@@ -87,6 +89,33 @@ public class MyCanvas extends Canvas implements Runnable{
 	public void run()
 	{
 		
+                 while (running){
+            synchronized (pauseLock) {
+                if (!running) { // may have changed while waiting to
+                                // synchronize on pauseLock
+                    break;
+                }
+                if (paused) {
+                    try {
+                        pauseLock.wait(); // will cause this Thread to block until 
+                                          // another thread calls pauseLock.notifyAll()
+                                          // Note that calling wait() will 
+                                          // relinquish the synchronized lock that this 
+                                          // thread holds on pauseLock so another thread
+                                          // can acquire the lock to call notifyAll()
+                                          // (link with explanation below this code)
+                    } catch (InterruptedException ex) {
+                        break;
+                    }
+                    if (!running) { // running might have changed since we paused
+                        break;
+                    }
+                }
+            }
+            
+            
+            
+            
 		imgBuf = createImage(600, 600);  // พื้นหลัง
 		gBuf = imgBuf.getGraphics();
 		
@@ -123,10 +152,11 @@ public class MyCanvas extends Canvas implements Runnable{
 					{
 						
 						pause();
+                                               
                                                   if (shotkey_state == SHOT_DOWN)
 					{
 						
-						 
+						resume();
 					}
 					}
                                        
@@ -139,13 +169,13 @@ public class MyCanvas extends Canvas implements Runnable{
 			repaint();
 			
 			try{
-				Thread.sleep(20);			
+				Thread.sleep(15);			
 			}
 			catch(InterruptedException e)
 			{}
 		}
 	}
-        
+        }
      
    
 
@@ -155,24 +185,11 @@ public class MyCanvas extends Canvas implements Runnable{
 		paint(g);
 	}
         
-       public void pause()
-       {
-           synchronized (lock) {
-         try {
-                        lock.wait(); 
-                    } catch (InterruptedException ex) {
-       }
-       }
-       }
+    
        
        
        
-	 public void resume()
-       {
-           synchronized (lock) {
-        lock.notifyAll();
-       }
-       }
+	
         
         
 	void gameMain()
@@ -223,6 +240,25 @@ public class MyCanvas extends Canvas implements Runnable{
                 
                 
 	}
+        
+         public void stop() {
+        running = false;
+        // you might also want to interrupt() the Thread that is 
+        // running this Runnable, too, or perhaps call:
+        resume();
+        // to unblock
+    }
+
+    public void pause() {
+        // you may want to throw an IllegalStateException if !running
+        paused = true;
+    }
+
+    public void resume() {
+        synchronized (pauseLock) {
+            paused = false;
+            pauseLock.notifyAll(); // Unblocks thread
+        }}
 }
         
         

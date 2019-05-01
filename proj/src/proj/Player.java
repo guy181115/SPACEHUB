@@ -30,7 +30,7 @@ public class Player extends GameObject
 		double postX = x + mx * speed;
 		double postY = y + my * speed;
 		
-		if ((0 < postX)&&(postX < 600)) //เคลื่อนที่แกนx จาก 0 ไป 600
+		if ((0 < postX)&&(postX < 580)) //เคลื่อนที่แกนx จาก 0 ไป 600
 		{
 			x = postX;
 		}

@@ -16,7 +16,7 @@ public class MyBullet extends GameObject
 	
 	public void move()
 	{
-        y -= 15;
+        y -= 12; //ความเร็วกระสุน
 		
 		if ( (y < 0) )
 		{
