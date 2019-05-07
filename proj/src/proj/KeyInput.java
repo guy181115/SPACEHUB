@@ -4,31 +4,34 @@ package proj;
 
 import java.awt.*;
 import java.awt.event.*;
+import static proj.MyCanvas.paused;
+import static proj.MyCanvas.thread;
 
 
-public class KeyInput extends KeyAdapter
+public class KeyInput extends Thread implements KeyListener
 {
-	
+    
+	public static boolean pressed = false;
 	boolean keyup;
 	boolean keydown;
 	boolean keyleft;
 	boolean keyright;
         int keyesc ;
 	int keyshot; // spacebar
-        boolean paused;
+        
 	KeyInput() {
 		keyup = false;
 		keydown = false;
 		keyleft = false;
 		keyright = false;
-                keyesc = 0;
+                keyesc = 1;
 		keyshot = 0;
 	}
 
 	
 	public void keyPressed(KeyEvent e) {
 		int keycode = e.getKeyCode();
-		if (keycode == KeyEvent.VK_LEFT)
+		if (keycode == KeyEvent.VK_LEFT )
 		{
 			keyleft = true;
 		}
@@ -59,21 +62,31 @@ public class KeyInput extends KeyAdapter
 			}
 		}
 		
-		if (keycode == KeyEvent.VK_ESCAPE) //ตั้งให้กด esc แล้ว pause
+            if (keycode == KeyEvent.VK_ESCAPE) //ตั้งให้กด esc แล้ว pause
 		{
-                    if (keyesc == 0)
+                    pressed = true;
+                    
+                    if (keyesc == 1 )
 			{
 				
 				keyesc = 2;
+                                paused = true;
+                                
+                                  
 			}
 			else
 			{
-				
+                               
+				paused = false;
 				keyesc = 1;
+                                thread.resume();
+                         }
+                    checkESCKey();
+                                
 			}
 		
                    }
-        }
+        
 	
 	public void keyReleased(KeyEvent e) {
 		int keycode = e.getKeyCode();
@@ -97,6 +110,7 @@ public class KeyInput extends KeyAdapter
 		{
 			keyshot = 0;
 		}
+               
              
                
 	}
@@ -142,14 +156,21 @@ public class KeyInput extends KeyAdapter
 		return ret;
 	}
         public int checkESCKey()
-	{
+	{       pressed = false;
+                
 		int pau = keyesc;
-		if (keyesc==2)
-		{
-			keyesc = 1;
-		}
 		return pau;
 	}
 
+    @Override
+    public void keyTyped(KeyEvent e) {
+      
+    }
 
+    public void initThread(String name) {
+        Thread KeyThread = new Thread(this,name);
+        KeyThread.start();
+
+    }
+ 
 }
