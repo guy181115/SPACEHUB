@@ -10,6 +10,7 @@ import java.awt.event.*;
 import java.util.Random;
 import java.util.logging.Logger;
 import static proj.KeyInput.pressed;
+import static proj.Title.image;
 
 public class MyCanvas extends Canvas implements Runnable {
 
@@ -94,7 +95,9 @@ public class MyCanvas extends Canvas implements Runnable {
                 switch (scene) {
 
                     case 0: //หน้าแรก
+                        planet(gBuf);
                         title.drawTitle(gBuf);
+                        
 
                         score.drawHiScore(gBuf);
 
@@ -131,12 +134,18 @@ public class MyCanvas extends Canvas implements Runnable {
     
     
     void gameMain() {
+        space(gBuf);
+        if(paused == true){
+         
+         
+              title.drawPausemenu(gBuf);
+  
+                pause();
+          
+          
+      }
         
-        
-      if(paused == true)
-          pause();
-      
-        
+          
         
         
         if (objectpool.isGameover()) {
@@ -174,9 +183,22 @@ public class MyCanvas extends Canvas implements Runnable {
     }
 
 
-    public void pause() {
-        thread.suspend();
+    public void pause(){
+          
+            thread.suspend();
+        } 
+             public void planet(Graphics g){
+              Toolkit toolkit = Toolkit.getDefaultToolkit();
+        image = toolkit.getImage("planet.gif");
+         g.drawImage(image, 0, 0, this);
+        }
+             public void space(Graphics g){
+              Toolkit toolkit = Toolkit.getDefaultToolkit();
+        image = toolkit.getImage("space.gif");
+         g.drawImage(image, 0, 0, this);
+        }
+        
     }
    
-    }
+    
 

@@ -7,7 +7,6 @@ import java.awt.event.*;
 import static proj.MyCanvas.paused;
 import static proj.MyCanvas.thread;
 
-
 public class KeyInput extends Thread implements KeyListener
 {
     
@@ -18,7 +17,8 @@ public class KeyInput extends Thread implements KeyListener
 	boolean keyright;
         int keyesc ;
 	int keyshot; // spacebar
-        
+        Title title;
+        Graphics g;
 	KeyInput() {
 		keyup = false;
 		keydown = false;
@@ -71,7 +71,7 @@ public class KeyInput extends Thread implements KeyListener
 				
 				keyesc = 2;
                                 paused = true;
-                                
+                              
                                   
 			}
 			else
@@ -80,6 +80,7 @@ public class KeyInput extends Thread implements KeyListener
 				paused = false;
 				keyesc = 1;
                                 thread.resume();
+                                
                          }
                     checkESCKey();
                                 
@@ -167,10 +168,6 @@ public class KeyInput extends Thread implements KeyListener
       
     }
 
-    public void initThread(String name) {
-        Thread KeyThread = new Thread(this,name);
-        KeyThread.start();
-
-    }
+  
  
 }

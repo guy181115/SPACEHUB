@@ -31,12 +31,14 @@ public class Game extends JFrame
 
 		
 		MyCanvas mc = new MyCanvas();
+                KeyInput ki = new KeyInput();
 		add(mc);				//เขียนหน้ากระดาษขึ้นมา
 		setVisible(true);		
 		
 		mc.init();
 		
-		mc.initThread();
+		mc.initThread("mc");
+                
 	}
 }
 
