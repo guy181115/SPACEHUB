@@ -3,6 +3,7 @@ package proj;
 
 import java.awt.*;
 import java.awt.event.*;
+import static proj.Title.image;
 
 
 public class MyBullet extends GameObject
@@ -27,8 +28,11 @@ public class MyBullet extends GameObject
 	
 	public void draw(Graphics g)
 	{
+                Toolkit toolkit = Toolkit.getDefaultToolkit();
+                image = toolkit.getImage("myBullet.png");
 		g.setColor(Color.gray);
-		g.drawRect((int)x-3, (int)y-10, (int)6, (int)20);
+		
+                g.drawImage(image, (int)x-16, (int)y-40, (int)35, (int)45, null);
 	}
 	
 	

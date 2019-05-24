@@ -3,6 +3,7 @@ package proj;
 
 import java.awt.*;
 import java.awt.event.*;
+import static proj.Title.image;
 
 
 public class Particle extends GameObject
@@ -38,8 +39,10 @@ public class Particle extends GameObject
 	
 	public void draw(Graphics g)
 	{
+                Toolkit toolkit = Toolkit.getDefaultToolkit();
+                image = toolkit.getImage("fireball2.gif");
 		g.setColor(Color.gray);
-		g.drawOval((int)(x-size/2), (int)(y-size/2), size, size);
+		g.drawImage(image,(int)(x-size/2), (int)(y-size/2), size, size,null);
 	}
 	
 	

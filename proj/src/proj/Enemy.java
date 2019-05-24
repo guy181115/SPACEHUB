@@ -11,6 +11,7 @@ package proj;
  */
 import java.awt.*;
 import java.awt.event.*;
+import static proj.Title.image;
 
 
 public class Enemy extends GameObject
@@ -170,7 +171,10 @@ public class Enemy extends GameObject
 			}
 		}
 		ishit = false;
-		g.drawRect((int)x-16, (int)y-16, (int)32, (int)32);
+                Toolkit toolkit = Toolkit.getDefaultToolkit();
+                image = toolkit.getImage("ship2.gif");
+                g.setColor(Color.WHITE);
+		g.drawImage(image,(int)x+2, (int)y-16, (int)32, (int)32,null);
 	}
 	
 

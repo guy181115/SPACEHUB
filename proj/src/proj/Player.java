@@ -3,6 +3,7 @@ package proj;
 
 import java.awt.*;
 import java.awt.event.*;
+import static proj.Title.image;
 
 
 public class Player extends GameObject
@@ -45,11 +46,16 @@ public class Player extends GameObject
 	{
 		if (active)
 		{
+                    Toolkit toolkit = Toolkit.getDefaultToolkit();
+                    image = toolkit.getImage("playerShip2.gif");
 			g.setColor(Color.red);
-
-			g.drawLine((int)(x), (int)(y-14), (int)(x-10), (int)(y+7));
-			g.drawLine((int)(x), (int)(y-14), (int)(x+10), (int)(y+7));
-			g.drawLine((int)(x-10), (int)(y+7), (int)(x+10), (int)(y+7));
+                        
+                        g.drawImage(image, (int)(x-40), (int)(y-40), (int)80, (int)80,null );
+                        
+                        
+			//g.drawLine((int)(x), (int)(y-14), (int)(x-10), (int)(y+7));
+			//g.drawLine((int)(x), (int)(y-14), (int)(x+10), (int)(y+7));
+			//g.drawLine((int)(x-10), (int)(y+7), (int)(x+10), (int)(y+7));
 		}
 	}
 	

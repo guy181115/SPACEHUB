@@ -4,10 +4,13 @@ package proj;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import static proj.Title.image;
 
 
 public class Bullet extends GameObject
 {
+       
 	double direction;
 	double speed;
 	double speedX;
@@ -26,7 +29,7 @@ public class Bullet extends GameObject
 		x += speedX;
 		y += speedY;
 		
-		if ( (x < 0)||(600 < x)||(y < 0)||(600 < y) )
+		if ( (x < 0)||(600 < x)||(y < 0)||(600 < y) ) //600
 		{
 			active = false;
 		}
@@ -35,8 +38,13 @@ public class Bullet extends GameObject
 	
 	public void draw(Graphics g)
 	{
-		g.setColor(Color.blue);
-		g.drawRect((int)(x-3), (int)(y-3), (int)6, (int)6);
+                Toolkit toolkit = Toolkit.getDefaultToolkit();
+                image = toolkit.getImage("laserBullet.png");
+		g.setColor(Color.RED);
+		
+                g.drawImage(image, (int)(x-3), (int)(y-3), (int)40, (int)30,null ); //default 6,6
+                
+                
 	}
 	
 	

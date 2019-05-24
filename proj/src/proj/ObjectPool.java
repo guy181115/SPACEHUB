@@ -22,15 +22,15 @@ public class ObjectPool
 	Player player;
 	
 	
-	static final int DIST_PLAYER_TO_BULLET = 8 ; //hit box ของผู้เล่นกะกระสุนอีกฝั่ง
-	static final int DIST_PLAYER_TO_ENEMY = 16; //hit box ของผู้เล่นกะยานศัตรู
-	static final int DIST_ENEMY_TO_MYBULLET = 16; //hit box ของยานศัตรูกะกระสุนเรา
+	static final int DIST_PLAYER_TO_BULLET = 30  ; //hit box ของผู้เล่นกะกระสุนอีกฝั่ง
+	static final int DIST_PLAYER_TO_ENEMY = 25; //hit box ของผู้เล่นกะยานศัตรู
+	static final int DIST_ENEMY_TO_MYBULLET = 25; //hit box ของยานศัตรูกะกระสุนเรา
 	
 	
 	static final int BULLET_MAX = 100;
 	static final int ENEMY_MAX = 100;
 	static final int PARTICLE_MAX = 100;
-	static final int MYBULLET_MAX = 1;
+	static final int MYBULLET_MAX = 5; //จำนวนกระสุนที่ยิงออกไปต่อการยิง 1 ครั้ง
 	
 
 	
