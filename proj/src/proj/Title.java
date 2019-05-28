@@ -73,19 +73,20 @@ public class Title
 	}
 	
         public void drawPausemenu(Graphics g)
-                	{
-                            g.setColor(Color.black);
-		g.setFont(titleFont);
-		g.drawString("PAUSED",180,280);
-		g.setColor(Color.white);
-		g.setFont(titleFont2);
-		g.drawString("PAUSED",180,280);
+        {       
                 g.setColor(Color.black);
 		g.setFont(infoFont4);
                 g.drawString("Press ESC to Resume.",340,540);
                 g.setColor(Color.white);
 		g.setFont(infoFont3);
                 g.drawString("Press ESC to Resume.",340,540);
+                g.setColor(Color.black);
+		g.setFont(titleFont);
+		g.drawString("PAUSED",180,280);
+		g.setColor(Color.white);
+		g.setFont(titleFont2);
+		g.drawString("PAUSED",180,280);
+                
 	}
         public void drawWin(Graphics g){
             g.setColor(Color.black);
