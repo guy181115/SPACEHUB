@@ -19,6 +19,8 @@ public class ObjectPool
 	static MyBullet[] mybullet; //กระสุนเรา
 	
 	static Particle[] particle; //สิ่งของในฉาก
+        
+        static Items[] items;
 
 	
 	Player player;
@@ -34,7 +36,7 @@ public class ObjectPool
 	static final int PARTICLE_MAX = 100;
 	static final int MYBULLET_MAX = 5; //จำนวนกระสุนที่ยิงออกไปต่อการยิง 1 ครั้ง
 	
-
+        static final int ITEMS_MAX = 50;
 	
 	ObjectPool()
 	{
@@ -69,6 +71,12 @@ public class ObjectPool
 		{
 				particle[i] = new Particle();
 		}
+                
+                items = new Items[ITEMS_MAX];
+		for(int i = 0; i < items.length; i++)
+		{
+				items[i] = new Items(player);
+		}
 	}
 
 	
@@ -78,6 +86,7 @@ public class ObjectPool
         doGameObjects(g, enemy);
         doGameObjects(g, mybullet);
         doGameObjects(g, particle);
+        doGameObjects(g, items);
 		player.draw(g);
 	}
 
@@ -122,6 +131,8 @@ public class ObjectPool
 		return -1;		
 	}
         
+        
+        
         public static int newBoss(){
             for (int i = 0; i < 1; i++)
 		{
@@ -133,7 +144,17 @@ public class ObjectPool
 		}
 		return -1;	
         }
-
+       public static int newItems(double ix, double iy){
+           for (int i = 0; i < ITEMS_MAX; i++)
+		{
+			if ((items[i].active) == false)
+			{
+				items[i].activate(ix, iy);
+				return i;
+			}
+		}
+		return -1;
+       }
     
 	public static int newMyBullets(double ix, double iy)
 	{

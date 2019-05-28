@@ -57,6 +57,9 @@ public class Player extends GameObject
 			//g.drawLine((int)(x), (int)(y-14), (int)(x+10), (int)(y+7));
 			//g.drawLine((int)(x-10), (int)(y+7), (int)(x+10), (int)(y+7));
 		}
+                
+                
+                
 	}
 	
 	
