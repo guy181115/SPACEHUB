@@ -187,6 +187,18 @@ public class ObjectPool
 		}
 		return -1;		
 	}
+        public static int newMyBulletsPowerUp(double ix, double iy)
+	{
+		for (int i = 0; i < MYBULLET_MAX; i++)
+		{
+			if ((mybullet[i].active) == false)
+			{
+				mybullet[i].activate(ix, iy);
+				return i;
+			}
+		}
+		return -1;		
+	}
 
     
 	public static int newParticle(double ix, double iy, double idirection, double ispeed)
@@ -228,7 +240,7 @@ public class ObjectPool
 	}
 
 	public static int x = 3;
-        public static int y = 5;
+        public static int y = 0;
 	public void getColision()
 	{
             
@@ -255,8 +267,9 @@ public class ObjectPool
 					
 					bullet[i].active = false;
 				}
-                                if (getDistance(player, bullet[i]) < DIST_PLAYER_TO_BULLET&&invulnerable == true)
+                                else if (getDistance(player, bullet[i]) < DIST_PLAYER_TO_BULLET&&invulnerable == true)
 				{
+                                    
                                     y--;
 					if(y==0)
                                         {
@@ -359,8 +372,9 @@ public class ObjectPool
 				
 				if (getDistance(player, items[i]) < DIST_PLAYER_TO_ITEMS)
 				{ 
-                                    if(Items.shield==true)
+                                    if(Items.shield==true&&invulnerable == false)
                                     {
+                                        y += 5;
                                         Items.shield=false;
                                         invulnerable = true;
                                         items[i].active = false;
