@@ -222,7 +222,11 @@ public class MyCanvas extends Canvas implements Runnable {
             ObjectPool.newEnemy(100 + random.nextInt(300), 0);
         }
         
-        if (counter % (800 - Level.getLevel() * 10) == 0 &&Level.getLevel()!=5&&Level.getLevel()!=6&&Level.getLevel()!=10&&Level.getLevel()!=15) {
+        if (counter % (800 - Level.getLevel() * 10) == 0 &&Level.getLevel()!=5&&
+                Level.getLevel()!=6&&Level.getLevel()!=7&&Level.getLevel()!=10&&
+                Level.getLevel()!=11&&Level.getLevel()!=12&&Level.getLevel()!=15&&
+                Level.getLevel()!=16&&Level.getLevel()!=17&&Level.getLevel()!=20&&
+                Level.getLevel()!=21&&Level.getLevel()!=22&&Level.getLevel()!=25) {
             ObjectPool.newItems(100 + random.nextInt(300), 0);
         }
 

@@ -37,6 +37,7 @@ public class ObjectPool
 	static final int DIST_ENEMY_TO_MYBULLET = 25; //hit box ของยานศัตรูกะกระสุนเรา
 	static final int DIST_BOSS1_TO_MYBULLET = 70;
 	static final int DIST_BOSS2_TO_MYBULLET = 100;
+        static final int DIST_BOSS3_TO_MYBULLET = 120;
         static final int DIST_PLAYER_TO_ITEMS = 40;
 	static final int BULLET_MAX = 100;
 	static final int ENEMY_MAX = 100;
@@ -49,7 +50,7 @@ public class ObjectPool
         public static boolean powerup2 = false;
         public static boolean powerup3 = false;
         public static boolean powerup4 = false;
-        
+        int counter = 0;
 	
 	ObjectPool()
 	{
@@ -200,7 +201,7 @@ public class ObjectPool
 		return -1;
        }
        public static int newItems(double ix, double iy,int type){
-           for (int i = 0; i < 1; i++)
+           for (int i = 0; i < 5; i++)
 		{
 			if ((items[i].active) == false)
 			{
@@ -276,12 +277,15 @@ public class ObjectPool
 		{
                         if(powerup==false)
 			newMyBullets(player.x, player.y);
-                        else if(powerup==true){
-                        SpecialBullet.FireAim(player.x,player.y);
+                        else if(powerup==true&&powerup2==false&&powerup3==false&&
+                                powerup4==false){
+                        SpecialBullet.FireAim2(player.x,player.y);
                         }
-                        else if(powerup2==true){
+                        else if(powerup==true&&powerup2==true&&powerup3==false&&
+                                powerup4==false){
+                                
                         SpecialBullet.FireAim(player.x,player.y);
-                        SpecialBullet.FireRound(player.x,player.y);
+                        
                         }
                             
 		}
@@ -379,6 +383,14 @@ public class ObjectPool
 							
 							mybullet[j].active = false;
                                                     }
+                                                     if (getDistance(enemy[i], mybullet[j]) < DIST_BOSS3_TO_MYBULLET&& boss3 == true)
+                                                    {
+							newParticle(mybullet[j].x, mybullet[j].y, 270, 2);
+							
+							enemy[i].hit();
+							
+							mybullet[j].active = false;
+                                                    }
                                                 }
                                                 
                                                 
@@ -410,6 +422,14 @@ public class ObjectPool
 							specialbullet[j].active = false;
                                                     }
                                                     if (getDistance(enemy[i], specialbullet[j]) < DIST_BOSS2_TO_MYBULLET&& boss2 == true)
+                                                    {
+							newParticle(specialbullet[j].x, specialbullet[j].y, 270, 2);
+							
+							enemy[i].hit();
+							
+							specialbullet[j].active = false;
+                                                    }
+                                                    if (getDistance(enemy[i], specialbullet[j]) < DIST_BOSS3_TO_MYBULLET&& boss3 == true)
                                                     {
 							newParticle(specialbullet[j].x, specialbullet[j].y, 270, 2);
 							
@@ -494,6 +514,7 @@ public class ObjectPool
                                     }
                                     else if(Items.special2==true)
                                     {
+                                        powerup = true;
                                         powerup2 = true;
                                         Items.special2=false;
                                     }

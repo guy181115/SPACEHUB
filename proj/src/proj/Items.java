@@ -68,20 +68,20 @@ public class Items extends GameObject {
 		{
 			case 0:
 				move_item0();
-                                shield = false;
-                                special = false;
 				break;
                         case 1:
                                 move_item0();
-                                special = false;
                                 shield = true;
 				break;
                         case 2:
                                 move_item0();
+                                shield = false;
                                 special = true;
 				break;       
                         case 3:
                                 move_item0();
+                                shield = false;
+                                special = false;
                                 special2 = true;
 				break;     
                         case 4:
@@ -106,10 +106,14 @@ public class Items extends GameObject {
 		x += Math.sin(y / 20);
 		
 		
-		if ( (600 < y) )
+		if ( 580 <= y )
 		{
-                        
-			active = false;
+                        shield = false;
+                        special = false;
+                        special2 = false;
+                        special3 = false;
+                        special4 = false;
+                        active = false;
 		}
 		
 		

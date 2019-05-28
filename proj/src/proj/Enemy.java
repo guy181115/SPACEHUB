@@ -76,7 +76,7 @@ public class Enemy extends GameObject
 		y = iy;
 		type = 3;
 		active = true;			
-		Str = 150; //Str 1 = 2 Shot 
+		Str = 200; //Str 1 = 2 Shot 
 		counter = 0;
 		boolean ishit = false;
 		shootnum = Level.getLevel();
@@ -89,7 +89,7 @@ public class Enemy extends GameObject
 		y = iy;
 		type = 4;
 		active = true;			
-		Str = 200; //Str 1 = 2 Shot 
+		Str = 300; //Str 1 = 2 Shot 
 		counter = 0;
 		boolean ishit = false;
 		shootnum = Level.getLevel();
@@ -351,7 +351,7 @@ public class Enemy extends GameObject
 			
                                         image = toolkit.getImage("boss3new.gif");
                                         g.setColor(Color.WHITE);
-                                        g.drawImage(image,(int)x-130, (int)y+10, (int)256, (int)256,null);
+                                        g.drawImage(image,(int)x-160, (int)y+10, (int)301, (int)123,null);
 					break;
                                         
 				default:
