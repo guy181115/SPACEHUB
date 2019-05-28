@@ -9,8 +9,13 @@ package proj;
  *
  * @author Napath
  */
+
 import java.awt.*;
 import java.awt.event.*;
+
+
+import java.util.Random;
+
 import static proj.Title.image;
 
 
@@ -30,7 +35,8 @@ public class Enemy extends GameObject
 	int shootnum;
         public static boolean boss1 = false;
         public static boolean boss2 = false;
-	
+        public static boolean boss3 = false;
+	Random random;
 	Enemy(Player iplayer)
 	{
 		
@@ -75,6 +81,20 @@ public class Enemy extends GameObject
 		boolean ishit = false;
 		shootnum = Level.getLevel();
 		startshoot = false;
+                
+	}
+        public void activate4(double ix, double iy)
+	{
+		x = ix;
+		y = iy;
+		type = 4;
+		active = true;			
+		Str = 200; //Str 1 = 2 Shot 
+		counter = 0;
+		boolean ishit = false;
+		shootnum = Level.getLevel();
+		startshoot = false;
+                
 	}
 
 	
@@ -97,15 +117,23 @@ public class Enemy extends GameObject
                                 case 2:
 					Score.addScore(100);
                                         Level.addLevel();
+                                        ObjectPool.newItems(280, 0,2);
                                         boss = false;
                                         System.out.println(boss);
 					break;
                                 case 3:
 					Score.addScore(150);
                                         Level.addLevel();
+                                        ObjectPool.newItems(280, 0,3);
                                         boss = false;
                                         System.out.println(boss);
 					break;
+                                case 4:
+					Score.addScore(200);
+                                        Level.addLevel();
+                                        boss = false;
+                                        System.out.println(boss);
+					break;        
 				default:
 			}
 			
@@ -135,6 +163,9 @@ public class Enemy extends GameObject
                         case 3:
 				move_boss2();
 				break;
+                        case 4:
+				move_boss3();
+				break;        
 			default:
 		}
 	}
@@ -248,6 +279,37 @@ public class Enemy extends GameObject
                    
 		}
 	}
+        
+        void move_boss3()
+	{       if(y<=40)
+                y++;
+		counter++;
+		
+		
+		
+	
+		if ((counter%60)==0)
+		{
+			
+			startshoot = true;
+		}
+		
+		
+		if (startshoot)
+		{
+                    if (((counter%150)==0))
+			{
+				Bullet.FireRound2(x-10, y+80);
+				
+			}
+                    if (((counter%40)==0))
+			{
+				Bullet.FireAim2(x-25, y+80, player);
+				
+			}
+                   
+		}
+	}
 	
 	
 	public void draw(Graphics g)
@@ -282,6 +344,12 @@ public class Enemy extends GameObject
                                 case 3:
 			
                                         image = toolkit.getImage("boss2new.gif");
+                                        g.setColor(Color.WHITE);
+                                        g.drawImage(image,(int)x-130, (int)y+10, (int)256, (int)256,null);
+					break;
+                                case 4:
+			
+                                        image = toolkit.getImage("boss3new.gif");
                                         g.setColor(Color.WHITE);
                                         g.drawImage(image,(int)x-130, (int)y+10, (int)256, (int)256,null);
 					break;

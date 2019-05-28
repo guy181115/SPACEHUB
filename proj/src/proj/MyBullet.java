@@ -17,7 +17,7 @@ public class MyBullet extends GameObject
 	
 	public void move()
 	{
-        y -= 12; //ความเร็วกระสุน
+        y -= 15; //ความเร็วกระสุน
 		
 		if ( (y < 0) )
 		{
@@ -42,5 +42,6 @@ public class MyBullet extends GameObject
 		y = iy;
 		active = true;			
 	}
+       
 }
 

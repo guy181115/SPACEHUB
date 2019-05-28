@@ -154,6 +154,9 @@ public class MyCanvas extends Canvas implements Runnable {
             title.drawGameover(gBuf);
             
             if (shotkey_state == SHOT_DOWN) {
+                ObjectPool.powerup =false;
+                ObjectPool.y=0;
+                Items.special=false;
                 ObjectPool.x=3;
                 Score.compareScore();
                 init();
@@ -172,10 +175,46 @@ public class MyCanvas extends Canvas implements Runnable {
             }*/
         }
         
+       
+         
+        
         if(Level.getLevel()==10){
             boss = true;
             Enemy.boss2 = true;
             ObjectPool.newBoss2();
+           /* title.drawWin(gBuf);
+            if (shotkey_state == SHOT_DOWN) {
+                Score.compareScore();
+                init();
+
+            }*/
+        }
+        if(Level.getLevel()==15){
+            boss = true;
+            Enemy.boss2 = true;
+            ObjectPool.newBoss3();
+           /* title.drawWin(gBuf);
+            if (shotkey_state == SHOT_DOWN) {
+                Score.compareScore();
+                init();
+
+            }*/
+        }
+        
+        if(Level.getLevel()==11){
+            
+            ObjectPool.newItems(100 + random.nextInt(300), 0,2);
+           /* title.drawWin(gBuf);
+            if (shotkey_state == SHOT_DOWN) {
+                Score.compareScore();
+                init();
+
+            }*/
+        }
+        if(Level.getLevel()==15){
+            boss = true;
+            Enemy.boss3 = true;
+            ObjectPool.newBoss3();
            /* title.drawWin(gBuf);
             if (shotkey_state == SHOT_DOWN) {
                 Score.compareScore();
@@ -188,11 +227,11 @@ public class MyCanvas extends Canvas implements Runnable {
         objectpool.getColision();
         objectpool.movePlayer(keyinput);
 
-        if (counter % (160 - Level.getLevel() * 10) == 0 && boss == false) {
+        if (counter % (250 - Level.getLevel() * 10) == 0 && boss == false) {
             ObjectPool.newEnemy(100 + random.nextInt(300), 0);
         }
         
-        if (counter % (800 - Level.getLevel() * 10) == 0 ) {
+        if (counter % (800 - Level.getLevel() * 10) == 0 &&Level.getLevel()!=5&&Level.getLevel()!=6&&Level.getLevel()!=10&&Level.getLevel()!=15) {
             ObjectPool.newItems(100 + random.nextInt(300), 0);
         }
 
@@ -208,7 +247,7 @@ public class MyCanvas extends Canvas implements Runnable {
 
         score.drawScore(gBuf);
         score.drawHiScore(gBuf);
-
+        
     }
 
 

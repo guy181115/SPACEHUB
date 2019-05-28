@@ -25,6 +25,8 @@ public class ObjectPool
 	static Particle[] particle; //สิ่งของในฉาก
         
         static Items[] items;
+        
+        static SpecialBullet[] specialbullet;
 
 	
 	Player player;
@@ -35,13 +37,19 @@ public class ObjectPool
 	static final int DIST_ENEMY_TO_MYBULLET = 25; //hit box ของยานศัตรูกะกระสุนเรา
 	static final int DIST_BOSS1_TO_MYBULLET = 70;
 	static final int DIST_BOSS2_TO_MYBULLET = 100;
-        static final int DIST_PLAYER_TO_ITEMS = 35;
+        static final int DIST_PLAYER_TO_ITEMS = 40;
 	static final int BULLET_MAX = 100;
 	static final int ENEMY_MAX = 100;
 	static final int PARTICLE_MAX = 100;
+        static final int SPECIALBULLET_MAX = 20;
 	static final int MYBULLET_MAX = 5; //จำนวนกระสุนที่ยิงออกไปต่อการยิง 1 ครั้ง
 	public static boolean invulnerable = false;
         static final int ITEMS_MAX = 50;
+        public static boolean powerup = false;
+        public static boolean powerup2 = false;
+        public static boolean powerup3 = false;
+        public static boolean powerup4 = false;
+        
 	
 	ObjectPool()
 	{
@@ -82,6 +90,11 @@ public class ObjectPool
 		{
 				items[i] = new Items(player);
 		}
+                specialbullet = new SpecialBullet[SPECIALBULLET_MAX];
+		for(int i = 0; i < specialbullet.length; i++)
+		{
+				specialbullet[i] = new SpecialBullet();
+		}
 	}
 
 	
@@ -92,7 +105,8 @@ public class ObjectPool
         doGameObjects(g, mybullet);
         doGameObjects(g, particle);
         doGameObjects(g, items);
-		player.draw(g);
+        doGameObjects(g, specialbullet);
+	player.draw(g);
 	}
 
 	
@@ -162,12 +176,35 @@ public class ObjectPool
 		return -1;	
         }
         
+        public static int newBoss3(){
+            for (int i = 0; i < 1; i++)
+		{
+			if ((enemy[i].active) == false)
+			{
+				enemy[i].activate4(310, 0);
+				return i;
+			}
+		}
+		return -1;	
+        }
+        
        public static int newItems(double ix, double iy){
            for (int i = 0; i < ITEMS_MAX; i++)
 		{
 			if ((items[i].active) == false)
 			{
 				items[i].activate(ix-5, iy);
+				return i;
+			}
+		}
+		return -1;
+       }
+       public static int newItems(double ix, double iy,int type){
+           for (int i = 0; i < 1; i++)
+		{
+			if ((items[i].active) == false)
+			{
+				items[i].activate(ix-5, iy, type);
 				return i;
 			}
 		}
@@ -187,15 +224,32 @@ public class ObjectPool
 		}
 		return -1;		
 	}
-        public static int newMyBulletsPowerUp(double ix, double iy)
+        public static int newmyBulletsPowerUp(double ix, double iy,double idirection, double ispeed)
 	{
-		for (int i = 0; i < MYBULLET_MAX; i++)
+		for (int i = 0; i < SPECIALBULLET_MAX; i++)
 		{
-			if ((mybullet[i].active) == false)
+			if ((specialbullet[i].active) == false)
 			{
-				mybullet[i].activate(ix, iy);
+				specialbullet[i].activate(ix, iy,idirection,ispeed);
 				return i;
+                                
 			}
+                        
+		}
+		return -1;		
+	}
+        
+          public static int newmyBulletsPowerUp(double ix, double iy)
+	{
+		for (int i = 0; i < SPECIALBULLET_MAX; i++)
+		{
+			if ((specialbullet[i].active) == false)
+			{
+				specialbullet[i].activate(ix, iy);
+				return i;
+                                
+			}
+                        
 		}
 		return -1;		
 	}
@@ -220,7 +274,16 @@ public class ObjectPool
 		
 		if (player.active)
 		{
+                        if(powerup==false)
 			newMyBullets(player.x, player.y);
+                        else if(powerup==true){
+                        SpecialBullet.FireAim(player.x,player.y);
+                        }
+                        else if(powerup2==true){
+                        SpecialBullet.FireAim(player.x,player.y);
+                        SpecialBullet.FireRound(player.x,player.y);
+                        }
+                            
 		}
 	}
 
@@ -321,11 +384,51 @@ public class ObjectPool
                                                 
                                                  if (getDistance(enemy[i], mybullet[j]) < DIST_ENEMY_TO_MYBULLET)
                                                     {
+                                                        
 							newParticle(mybullet[j].x, mybullet[j].y, 270, 2);
 							
 							enemy[i].hit();
 							
 							mybullet[j].active = false;
+                                                       
+                                                    }
+                                                
+					}
+				}
+                                for (int j = 0; j < specialbullet.length; j++)
+				{
+					if (specialbullet[j].active == true)
+					{
+                                                if(boss == true)
+                                                {
+                                                    if (getDistance(enemy[i], specialbullet[j]) < DIST_BOSS1_TO_MYBULLET&& boss1 == true)
+                                                    {
+							newParticle(specialbullet[j].x, specialbullet[j].y, 270, 2);
+							
+							enemy[i].hit();
+							
+							specialbullet[j].active = false;
+                                                    }
+                                                    if (getDistance(enemy[i], specialbullet[j]) < DIST_BOSS2_TO_MYBULLET&& boss2 == true)
+                                                    {
+							newParticle(specialbullet[j].x, specialbullet[j].y, 270, 2);
+							
+							enemy[i].hit();
+							
+							specialbullet[j].active = false;
+                                                    }
+                                                }
+                                                
+                                                
+                                                 if (getDistance(enemy[i], specialbullet[j]) < DIST_ENEMY_TO_MYBULLET)
+                                                    {
+                                                        
+							newParticle(specialbullet[j].x, specialbullet[j].y, 270, 2);
+							
+							enemy[i].hit();
+							
+							specialbullet[j].active = false;
+                                                       
                                                     }
                                                 
 					}
@@ -338,7 +441,7 @@ public class ObjectPool
 			if ((enemy[i].active)&&(player.active))
 			{
 				
-				if (getDistance(player, enemy[i]) < DIST_PLAYER_TO_ENEMY)
+				if (getDistance(player, enemy[i]) < DIST_PLAYER_TO_ENEMY&&invulnerable == false)
 				{
 					
 					player.active = false;
@@ -350,11 +453,15 @@ public class ObjectPool
 					}
 					
 				}
-                                if (getDistance(player, enemy[i]) < DIST_PLAYER_TO_ENEMY)
+                               else if (getDistance(player, enemy[i]) < DIST_PLAYER_TO_ENEMY&&invulnerable == true)
 				{
 					
-					player.active = false;
-
+					y--;
+                                        if(y==0)
+                                        {
+					invulnerable = false;
+                                        
+                                        }
 					
 					for (int j = 0; j < 360; j += 20)
 					{
@@ -379,6 +486,26 @@ public class ObjectPool
                                         invulnerable = true;
                                         items[i].active = false;
 
+                                    }
+                                    else if(Items.special==true)
+                                    {
+                                        powerup = true;
+                                        Items.special=false;
+                                    }
+                                    else if(Items.special2==true)
+                                    {
+                                        powerup2 = true;
+                                        Items.special2=false;
+                                    }
+                                    else if(Items.special3==true)
+                                    {
+                                        powerup = true;
+                                        Items.special=false;
+                                    }
+                                    else if(Items.special4==true)
+                                    {
+                                        powerup = true;
+                                        Items.special=false;
                                     }
 					else
 					x++;

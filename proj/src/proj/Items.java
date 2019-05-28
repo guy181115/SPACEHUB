@@ -21,6 +21,10 @@ public class Items extends GameObject {
 	boolean ishit = false;
 	public static boolean boss = false;
         public static boolean shield = false;
+        public static boolean special = false;
+        public static boolean special2 = false;
+        public static boolean special3 = false;
+        public static boolean special4 = false;
 	Player player;
 	
 	boolean startshoot;
@@ -43,8 +47,18 @@ public class Items extends GameObject {
 		Str = 1; //Str 1 = 2 Shot 
 		counter = 0;
 		boolean ishit = false;
-		shootnum = Level.getLevel();
-		startshoot = false;
+		
+	}
+         public void activate(double ix, double iy,int type)
+	{
+		x = ix;
+		y = iy;
+		this.type = type;
+		active = true;			
+		Str = 1; //Str 1 = 2 Shot 
+		counter = 0;
+		boolean ishit = false;
+
 	}
         
          public void move()
@@ -55,11 +69,29 @@ public class Items extends GameObject {
 			case 0:
 				move_item0();
                                 shield = false;
+                                special = false;
 				break;
                         case 1:
                                 move_item0();
+                                special = false;
                                 shield = true;
 				break;
+                        case 2:
+                                move_item0();
+                                special = true;
+				break;       
+                        case 3:
+                                move_item0();
+                                special2 = true;
+				break;     
+                        case 4:
+                                move_item0();
+                                special3 = true;
+				break; 
+                        case 5:
+                                move_item0();
+                                special4 = true;
+				break; 
 			default:
                                 
 		}
@@ -76,7 +108,7 @@ public class Items extends GameObject {
 		
 		if ( (600 < y) )
 		{
-                        shield = true;
+                        
 			active = false;
 		}
 		
@@ -100,6 +132,26 @@ public class Items extends GameObject {
                        g.setColor(Color.WHITE);
                        g.drawImage(image,(int)x+2, (int)y-16, (int)32, (int)32,null);
                        break;
+                case 2:
+                       image = toolkit.getImage("powerup.png");
+                       g.setColor(Color.WHITE);
+                       g.drawImage(image,(int)x, (int)y-16, (int)64, (int)64,null);
+                       break;       
+                case 3:
+                       image = toolkit.getImage("powerup1.png");
+                       g.setColor(Color.WHITE);
+                       g.drawImage(image,(int)x, (int)y-16, (int)64, (int)64,null);
+                       break;   
+                case 4:
+                       image = toolkit.getImage("powerup2.png");
+                       g.setColor(Color.WHITE);
+                       g.drawImage(image,(int)x, (int)y-16, (int)64, (int)64,null);
+                       break;  
+                case 5:
+                       image = toolkit.getImage("powerup3.png");
+                       g.setColor(Color.WHITE);
+                       g.drawImage(image,(int)x, (int)y-16, (int)64, (int)64,null);
+                       break;         
             }			
         }
 }
