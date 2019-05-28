@@ -3,7 +3,8 @@ package proj;
 
 import java.awt.*;
 import java.awt.event.*;
-import static proj.Enemy.boss;
+
+import static proj.Enemy.*;
 //import static proj.Enemy.type;
 
 
@@ -29,8 +30,9 @@ public class ObjectPool
 	static final int DIST_PLAYER_TO_BULLET = 30  ; //hit box ของผู้เล่นกะกระสุนอีกฝั่ง
 	static final int DIST_PLAYER_TO_ENEMY = 25; //hit box ของผู้เล่นกะยานศัตรู
 	static final int DIST_ENEMY_TO_MYBULLET = 25; //hit box ของยานศัตรูกะกระสุนเรา
-	static final int DIST_BOSS_TO_MYBULLET = 70;
-	
+	static final int DIST_BOSS1_TO_MYBULLET = 70;
+	static final int DIST_BOSS2_TO_MYBULLET = 100;
+        static final int DIST_PLAYER_TO_ITEMS = 35;
 	static final int BULLET_MAX = 100;
 	static final int ENEMY_MAX = 100;
 	static final int PARTICLE_MAX = 100;
@@ -150,7 +152,7 @@ public class ObjectPool
 		{
 			if ((enemy[i].active) == false)
 			{
-				enemy[i].activate3(280, 0);
+				enemy[i].activate3(310, 0);
 				return i;
 			}
 		}
@@ -162,12 +164,13 @@ public class ObjectPool
 		{
 			if ((items[i].active) == false)
 			{
-				items[i].activate(ix, iy);
+				items[i].activate(ix-5, iy);
 				return i;
 			}
 		}
 		return -1;
        }
+       
     
 	public static int newMyBullets(double ix, double iy)
 	{
@@ -261,7 +264,15 @@ public class ObjectPool
 					{
                                                 if(boss == true)
                                                 {
-                                                    if (getDistance(enemy[i], mybullet[j]) < DIST_BOSS_TO_MYBULLET)
+                                                    if (getDistance(enemy[i], mybullet[j]) < DIST_BOSS1_TO_MYBULLET&& boss1 == true)
+                                                    {
+							newParticle(mybullet[j].x, mybullet[j].y, 270, 2);
+							
+							enemy[i].hit();
+							
+							mybullet[j].active = false;
+                                                    }
+                                                    if (getDistance(enemy[i], mybullet[j]) < DIST_BOSS2_TO_MYBULLET&& boss2 == true)
                                                     {
 							newParticle(mybullet[j].x, mybullet[j].y, 270, 2);
 							
@@ -310,7 +321,7 @@ public class ObjectPool
 			if ((items[i].active)&&(player.active))
 			{
 				
-				if (getDistance(player, items[i]) < DIST_PLAYER_TO_ENEMY)
+				if (getDistance(player, items[i]) < DIST_PLAYER_TO_ITEMS)
 				{
 					
 					x++;

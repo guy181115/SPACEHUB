@@ -28,7 +28,8 @@ public class Enemy extends GameObject
 	
 	boolean startshoot;
 	int shootnum;
-
+        public static boolean boss1 = false;
+        public static boolean boss2 = false;
 	
 	Enemy(Player iplayer)
 	{
@@ -101,6 +102,7 @@ public class Enemy extends GameObject
 					break;
                                 case 3:
 					Score.addScore(150);
+                                        Level.addLevel();
                                         boss = false;
                                         System.out.println(boss);
 					break;
@@ -233,11 +235,17 @@ public class Enemy extends GameObject
 		
 		if (startshoot)
 		{
-                    
-                      if ((counter%80)==0)
-		{
-			Bullet.FireRound(x-20, y+20);
-		}
+                    if (((counter%150)==0))
+			{
+				Bullet.FireRound(x-10, y+80);
+				
+			}
+                    if (((counter%40)==0))
+			{
+				Bullet.FireAim3(x-25, y+80, player);
+				
+			}
+                   
 		}
 	}
 	
@@ -273,9 +281,9 @@ public class Enemy extends GameObject
                                        
                                 case 3:
 			
-                                        image = toolkit.getImage("boss3.gif");
+                                        image = toolkit.getImage("boss2.gif");
                                         g.setColor(Color.WHITE);
-                                        g.drawImage(image,(int)x-70, (int)y, (int)256, (int)256,null);
+                                        g.drawImage(image,(int)x-120, (int)y+10, (int)256, (int)256,null);
 					break;
                                         
 				default:

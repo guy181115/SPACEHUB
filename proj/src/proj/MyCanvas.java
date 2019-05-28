@@ -162,6 +162,7 @@ public class MyCanvas extends Canvas implements Runnable {
         }
         if(Level.getLevel()==5){
             boss = true;
+            Enemy.boss1 = true;
             ObjectPool.newBoss1();
            /* title.drawWin(gBuf);
             if (shotkey_state == SHOT_DOWN) {
@@ -173,6 +174,7 @@ public class MyCanvas extends Canvas implements Runnable {
         
         if(Level.getLevel()==10){
             boss = true;
+            Enemy.boss2 = true;
             ObjectPool.newBoss2();
            /* title.drawWin(gBuf);
             if (shotkey_state == SHOT_DOWN) {
