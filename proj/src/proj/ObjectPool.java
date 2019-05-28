@@ -186,10 +186,11 @@ public class ObjectPool
 		double Ydiff = Math.abs(ga.y - gb.y);
 		return Math.sqrt(Math.pow(Xdiff,2) + Math.pow(Ydiff,2));
 	}
-public static int x = 3;
-	
+
+	public static int x = 3;
 	public void getColision()
 	{
+            
 		
         for (int i = 0; i < bullet.length; i++) {
 			if ((bullet[i].active)&&(player.active))
@@ -199,7 +200,10 @@ public static int x = 3;
 				{
                                     x--;
 					if(x==0)
+                                        {
 					player.active = false;
+                                        x=3;
+                                        }
 
 					
 					for (int j = 0; j < 360; j += 20)
