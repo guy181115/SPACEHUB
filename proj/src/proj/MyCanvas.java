@@ -160,9 +160,20 @@ public class MyCanvas extends Canvas implements Runnable {
 
             }
         }
-        if(Level.getLevel()>=3){
+        if(Level.getLevel()==5){
             boss = true;
-            ObjectPool.newBoss();
+            ObjectPool.newBoss1();
+           /* title.drawWin(gBuf);
+            if (shotkey_state == SHOT_DOWN) {
+                Score.compareScore();
+                init();
+
+            }*/
+        }
+        
+        if(Level.getLevel()==10){
+            boss = true;
+            ObjectPool.newBoss2();
            /* title.drawWin(gBuf);
             if (shotkey_state == SHOT_DOWN) {
                 Score.compareScore();
@@ -175,7 +186,7 @@ public class MyCanvas extends Canvas implements Runnable {
         objectpool.getColision();
         objectpool.movePlayer(keyinput);
 
-        if (counter % (100 - Level.getLevel() * 10) == 0 && boss == false) {
+        if (counter % (160 - Level.getLevel() * 10) == 0 && boss == false) {
             ObjectPool.newEnemy(100 + random.nextInt(300), 0);
         }
         

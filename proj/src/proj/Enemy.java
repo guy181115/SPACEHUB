@@ -57,7 +57,19 @@ public class Enemy extends GameObject
 		y = iy;
 		type = 2;
 		active = true;			
-		Str = 50; //Str 1 = 2 Shot 
+		Str = 100; //Str 1 = 2 Shot 
+		counter = 0;
+		boolean ishit = false;
+		shootnum = Level.getLevel();
+		startshoot = false;
+	}
+        public void activate3(double ix, double iy)
+	{
+		x = ix;
+		y = iy;
+		type = 3;
+		active = true;			
+		Str = 150; //Str 1 = 2 Shot 
 		counter = 0;
 		boolean ishit = false;
 		shootnum = Level.getLevel();
@@ -83,6 +95,12 @@ public class Enemy extends GameObject
 					break;
                                 case 2:
 					Score.addScore(100);
+                                        Level.addLevel();
+                                        boss = false;
+                                        System.out.println(boss);
+					break;
+                                case 3:
+					Score.addScore(150);
                                         boss = false;
                                         System.out.println(boss);
 					break;
@@ -111,6 +129,9 @@ public class Enemy extends GameObject
 				break;
                         case 2:
 				move_boss1();
+				break;
+                        case 3:
+				move_boss2();
 				break;
 			default:
 		}
@@ -186,12 +207,37 @@ public class Enemy extends GameObject
 		
 		if (startshoot)
 		{
-                    
                      if (((counter%50)==0))
 			{
 				Bullet.FireAim(x-25, y+80, player);
 				
 			}
+                    
+		}
+	}
+        
+        void move_boss2()
+	{       if(y<=40)
+                y++;
+		counter++;
+		
+		
+		
+	
+		if ((counter%60)==0)
+		{
+			
+			startshoot = true;
+		}
+		
+		
+		if (startshoot)
+		{
+                    
+                      if ((counter%80)==0)
+		{
+			Bullet.FireRound(x-20, y+20);
+		}
 		}
 	}
 	
@@ -223,6 +269,13 @@ public class Enemy extends GameObject
                                         image = toolkit.getImage("boss1.gif");
                                         g.setColor(Color.WHITE);
                                         g.drawImage(image,(int)x-70, (int)y, (int)128, (int)128,null);
+					break;
+                                       
+                                case 3:
+			
+                                        image = toolkit.getImage("boss3.gif");
+                                        g.setColor(Color.WHITE);
+                                        g.drawImage(image,(int)x-70, (int)y, (int)256, (int)256,null);
 					break;
                                         
 				default:

@@ -133,7 +133,7 @@ public class ObjectPool
         
         
         
-        public static int newBoss(){
+        public static int newBoss1(){
             for (int i = 0; i < 1; i++)
 		{
 			if ((enemy[i].active) == false)
@@ -144,6 +144,19 @@ public class ObjectPool
 		}
 		return -1;	
         }
+        
+        public static int newBoss2(){
+            for (int i = 0; i < 1; i++)
+		{
+			if ((enemy[i].active) == false)
+			{
+				enemy[i].activate3(280, 0);
+				return i;
+			}
+		}
+		return -1;	
+        }
+        
        public static int newItems(double ix, double iy){
            for (int i = 0; i < ITEMS_MAX; i++)
 		{
@@ -222,7 +235,7 @@ public class ObjectPool
                                     x--;
 					if(x==0)
                                         {
-					player.active = false;
+					player.active = true;
                                         
                                         }
 

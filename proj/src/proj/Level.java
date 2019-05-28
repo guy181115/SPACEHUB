@@ -16,7 +16,7 @@ public class Level
 	public static void addLevel()
 	{
 		
-		if (level < 8)
+		if (level < 15)
 		{
 			level++;
 		}
