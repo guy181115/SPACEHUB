@@ -81,6 +81,23 @@ public class Title
 		g.setFont(titleFont2);
 		g.drawString("PAUSED",180,280);
 	}
+        public void drawWin(Graphics g){
+            g.setColor(Color.black);
+                g.fillRect(0, 240, 600, 50);
+		g.setColor(Color.blue);
+		g.setFont(titleFont);
+		g.drawString("YOU WIN",150,280);
+                g.setColor(Color.blue);
+		g.setFont(titleFont2);
+		g.drawString("YOU WIN",150,280);
+                g.setColor(Color.black);
+		g.setFont(infoFont4);
+                g.drawString("Press space bar to main menu.",10,540);
+                g.setColor(Color.white);
+		g.setFont(infoFont3);
+                g.drawString("Press space bar to main menu.",10,540);
+            
+        }
     
 }
 

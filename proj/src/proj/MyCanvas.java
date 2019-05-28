@@ -11,7 +11,7 @@ import java.util.Random;
 import java.util.logging.Logger;
 import static proj.KeyInput.pressed;
 import static proj.Title.image;
-
+import static proj.Enemy.boss;
 public class MyCanvas extends Canvas implements Runnable {
 
     ObjectPool objectpool;
@@ -149,6 +149,7 @@ public class MyCanvas extends Canvas implements Runnable {
         if (objectpool.isGameover()) { //ตาย
             
             title.drawGameover(gBuf);
+            
             if (shotkey_state == SHOT_DOWN) {
 
                 Score.compareScore();
@@ -156,16 +157,26 @@ public class MyCanvas extends Canvas implements Runnable {
 
             }
         }
+        if(Level.getLevel()==3){
+            boss = true;
+            ObjectPool.newBoss();
+           /* title.drawWin(gBuf);
+            if (shotkey_state == SHOT_DOWN) {
+                Score.compareScore();
+                init();
+
+            }*/
+        }
          
 
         objectpool.getColision();
         objectpool.movePlayer(keyinput);
 
-        if (counter % (100 - Level.getLevel() * 10) == 0) {
+        if (counter % (100 - Level.getLevel() * 10) == 0 && Level.getLevel()<3) {
             ObjectPool.newEnemy(100 + random.nextInt(300), 0);
         }
 
-        if ((counter % 500) == 0) {
+        if ((counter % 500) == 0/*&&Level.getLevel()<3*/) {
             Level.addLevel();
         }
 
