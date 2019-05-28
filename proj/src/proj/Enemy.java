@@ -20,11 +20,10 @@ public class Enemy extends GameObject
 	int counter = 0;
 	
 	int Str;
-	
 	int type;
 	
 	boolean ishit = false;
-	
+	public static boolean boss = false;
 	Player player;
 	
 	boolean startshoot;
@@ -52,6 +51,18 @@ public class Enemy extends GameObject
 		shootnum = Level.getLevel();
 		startshoot = false;
 	}
+        public void activate2(double ix, double iy)
+	{
+		x = ix;
+		y = iy;
+		type = 2;
+		active = true;			
+		Str = 100; //Str 1 = 2 Shot 
+		counter = 0;
+		boolean ishit = false;
+		shootnum = Level.getLevel();
+		startshoot = false;
+	}
 
 	
 	public void hit()
@@ -69,6 +80,10 @@ public class Enemy extends GameObject
 					break;
 				case 1:
 					Score.addScore(20);
+					break;
+                                case 2:
+					Score.addScore(100);
+                                        boss = false;
 					break;
 				default:
 			}
@@ -92,6 +107,9 @@ public class Enemy extends GameObject
 				break;
 			case 1:
 				move_enemy1();
+				break;
+                        case 2:
+				move_boss1();
 				break;
 			default:
 		}
@@ -150,11 +168,36 @@ public class Enemy extends GameObject
 			}
 		}
 	}
+        void move_boss1()
+	{       if(y<=20)
+                y++;
+		counter++;
+		
+		
+		
+	
+		if ((counter%60)==0)
+		{
+			
+			startshoot = true;
+		}
+		
+		
+		if (startshoot)
+		{
+                    
+                     if (((counter%30)==0))
+			{
+				Bullet.FireAim(x, y+50, player);
+				
+			}
+		}
+	}
 	
 	
 	public void draw(Graphics g)
 	{
-		
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		if (ishit)
 		{
 			g.setColor(Color.orange);
@@ -162,19 +205,30 @@ public class Enemy extends GameObject
 			switch(type)
 			{
 				case 0:
-					g.setColor(Color.black);
+					
+                                        image = toolkit.getImage("ship2.gif");
+                                        g.setColor(Color.WHITE);
+                                        g.drawImage(image,(int)x+2, (int)y-16, (int)32, (int)32,null);
 					break;
 				case 1:
+                                        
+                                        image = toolkit.getImage("ship2.gif");
+                                        g.setColor(Color.WHITE);
+                                        g.drawImage(image,(int)x+2, (int)y-16, (int)32, (int)32,null);
 					g.setColor(Color.blue);
 					break;
+                                case 2:
+			
+                                        image = toolkit.getImage("boss1.gif");
+                                        g.setColor(Color.WHITE);
+                                        g.drawImage(image,(int)x-50, (int)y, (int)128, (int)128,null);
+					break;
+                                        
 				default:
 			}
 		}
 		ishit = false;
-                Toolkit toolkit = Toolkit.getDefaultToolkit();
-                image = toolkit.getImage("ship2.gif");
-                g.setColor(Color.WHITE);
-		g.drawImage(image,(int)x+2, (int)y-16, (int)32, (int)32,null);
+                
 	}
 	
 

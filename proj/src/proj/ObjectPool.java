@@ -3,13 +3,15 @@ package proj;
 
 import java.awt.*;
 import java.awt.event.*;
+import static proj.Enemy.boss;
+//import static proj.Enemy.type;
 
 
 
 public class ObjectPool
 {
 	
-	
+        
 	static Bullet[] bullet; //กระสุน
 	
 	static Enemy[] enemy; //ศัตรู
@@ -25,7 +27,7 @@ public class ObjectPool
 	static final int DIST_PLAYER_TO_BULLET = 30  ; //hit box ของผู้เล่นกะกระสุนอีกฝั่ง
 	static final int DIST_PLAYER_TO_ENEMY = 25; //hit box ของผู้เล่นกะยานศัตรู
 	static final int DIST_ENEMY_TO_MYBULLET = 25; //hit box ของยานศัตรูกะกระสุนเรา
-	
+	static final int DIST_BOSS_TO_MYBULLET = 40;
 	
 	static final int BULLET_MAX = 100;
 	static final int ENEMY_MAX = 100;
@@ -119,6 +121,18 @@ public class ObjectPool
 		}
 		return -1;		
 	}
+        
+        public static int newBoss(){
+            for (int i = 0; i < 1; i++)
+		{
+			if ((enemy[i].active) == false)
+			{
+				enemy[i].activate2(280, 0);
+				return i;
+			}
+		}
+		return -1;	
+        }
 
     
 	public static int newMyBullets(double ix, double iy)
@@ -206,15 +220,28 @@ public class ObjectPool
 				{
 					if (mybullet[j].active == true)
 					{
-						
-						if (getDistance(enemy[i], mybullet[j]) < DIST_ENEMY_TO_MYBULLET)
-						{
+                                                if(boss == true)
+                                                {
+                                                    if (getDistance(enemy[i], mybullet[j]) < DIST_BOSS_TO_MYBULLET)
+                                                    {
 							newParticle(mybullet[j].x, mybullet[j].y, 270, 2);
 							
 							enemy[i].hit();
 							
 							mybullet[j].active = false;
-						}
+                                                    }
+                                                }
+                                                
+                                                
+                                                 if (getDistance(enemy[i], mybullet[j]) < DIST_ENEMY_TO_MYBULLET)
+                                                    {
+							newParticle(mybullet[j].x, mybullet[j].y, 270, 2);
+							
+							enemy[i].hit();
+							
+							mybullet[j].active = false;
+                                                    }
+                                                
 					}
 				}
 			}
