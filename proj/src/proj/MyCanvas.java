@@ -175,11 +175,11 @@ public class MyCanvas extends Canvas implements Runnable {
         objectpool.getColision();
         objectpool.movePlayer(keyinput);
 
-        if (counter % (100 - Level.getLevel() * 10) == 0 && Level.getLevel()<3) {
+        if (counter % (100 - Level.getLevel() * 10) == 0 && boss == false) {
             ObjectPool.newEnemy(100 + random.nextInt(300), 0);
         }
 
-        if ((counter % 500) == 0/*&&Level.getLevel()<3*/) {
+        if ((counter % 500) == 0/*&&Level.getLevel()<3*/&& boss == false) {
             Level.addLevel();
         }
 
