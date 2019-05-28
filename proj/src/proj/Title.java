@@ -66,10 +66,10 @@ public class Title
 		g.drawString("YOU DIED",150,280);
                 g.setColor(Color.black);
 		g.setFont(infoFont4);
-                g.drawString("Press space bar to main menu.",10,540);
+                g.drawString("Press space bar to main menu.",130,540);
                 g.setColor(Color.white);
 		g.setFont(infoFont3);
-                g.drawString("Press space bar to main menu.",10,540);
+                g.drawString("Press space bar to main menu.",130,540);
 	}
 	
         public void drawPausemenu(Graphics g)
