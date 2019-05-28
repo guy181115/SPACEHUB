@@ -363,6 +363,7 @@ public class ObjectPool
                                     {
                                         Items.shield=false;
                                         invulnerable = true;
+                                        items[i].active = false;
 
                                     }
 					else
