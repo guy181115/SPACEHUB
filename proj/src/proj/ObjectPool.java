@@ -292,6 +292,25 @@ public class ObjectPool
 				}
 			}
         }
+        
+         for (int i = 0; i < items.length; i++) {
+			if ((items[i].active)&&(player.active))
+			{
+				
+				if (getDistance(player, items[i]) < DIST_PLAYER_TO_ENEMY)
+				{
+					
+					x++;
+                                        items[i].active = false;
+					
+					for (int j = 0; j < 360; j += 20)
+					{
+						newParticle(player.x, player.y, j, 2);
+					}
+					
+				}
+			}
+        }
 
 	}
 	
