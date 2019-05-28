@@ -59,7 +59,8 @@ public class MyCanvas extends Canvas implements Runnable {
         gameover = false;
 
         Level.initLevel();
-
+        ObjectPool.x = 30;
+        ObjectPool.y = 0;
         Score.initScore();
     }
 
