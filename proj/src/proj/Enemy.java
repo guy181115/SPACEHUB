@@ -176,6 +176,7 @@ public class Enemy extends GameObject
                                     
                                 case 6:
 					Score.addScore(300);
+                                        if(Level.getLevel() == 25)
                                         Level.addLevel();
                                         boss = false;
                                         System.out.println("YOU WIN");
