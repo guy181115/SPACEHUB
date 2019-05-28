@@ -145,11 +145,9 @@ public class MyCanvas extends Canvas implements Runnable {
           
       }
         
-          
         
-        
-        if (objectpool.isGameover()) {
-
+        if (objectpool.isGameover()) { //ตาย
+            
             title.drawGameover(gBuf);
             if (shotkey_state == SHOT_DOWN) {
 
