@@ -379,17 +379,17 @@ public class Enemy extends GameObject
 		
 		if (startshoot)
 		{
-                    if (((counter%150)==0))
+                    if (((counter%200)==0))
 			{
 				Bullet.FireAim3(x-25, y+80, player);
 				
 			}
-                    if (((counter%40)==0))
+                    if (((counter%100)==0))
 			{
 				Bullet.FireAim2(x-25, y+80, player);
 				
 			}
-                    if (((counter%40)==0))
+                    if (((counter%50)==0))
 			{
 				Bullet.FireAim(x-25, y+80, player);
 				

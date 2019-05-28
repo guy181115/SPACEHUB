@@ -343,7 +343,7 @@ public class ObjectPool
 		return Math.sqrt(Math.pow(Xdiff,2) + Math.pow(Ydiff,2));
 	}
 
-	public static int x = 30;
+	public static int x = 30 ;
         public static int y = 0;
 	public void getColision()
 	{
@@ -358,7 +358,7 @@ public class ObjectPool
                                     x--;
 					if(x==0)
                                         {
-					player.active = true;
+					player.active = false;
                                         
                                         }
 
