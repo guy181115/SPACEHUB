@@ -84,6 +84,7 @@ public class Enemy extends GameObject
                                 case 2:
 					Score.addScore(100);
                                         boss = false;
+                                        System.out.println(boss);
 					break;
 				default:
 			}

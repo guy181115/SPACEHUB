@@ -27,7 +27,7 @@ public class ObjectPool
 	static final int DIST_PLAYER_TO_BULLET = 30  ; //hit box ของผู้เล่นกะกระสุนอีกฝั่ง
 	static final int DIST_PLAYER_TO_ENEMY = 25; //hit box ของผู้เล่นกะยานศัตรู
 	static final int DIST_ENEMY_TO_MYBULLET = 25; //hit box ของยานศัตรูกะกระสุนเรา
-	static final int DIST_BOSS_TO_MYBULLET = 40;
+	static final int DIST_BOSS_TO_MYBULLET = 80;
 	
 	static final int BULLET_MAX = 100;
 	static final int ENEMY_MAX = 100;
@@ -186,7 +186,7 @@ public class ObjectPool
 		double Ydiff = Math.abs(ga.y - gb.y);
 		return Math.sqrt(Math.pow(Xdiff,2) + Math.pow(Ydiff,2));
 	}
-
+public static int x = 3;
 	
 	public void getColision()
 	{
@@ -197,7 +197,8 @@ public class ObjectPool
 				
 				if (getDistance(player, bullet[i]) < DIST_PLAYER_TO_BULLET)
 				{
-					
+                                    x--;
+					if(x==0)
 					player.active = false;
 
 					
