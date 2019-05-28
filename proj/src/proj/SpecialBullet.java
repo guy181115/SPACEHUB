@@ -88,6 +88,19 @@ public class SpecialBullet extends GameObject
 		ObjectPool.newmyBulletsPowerUp(x+5, y);
 	}
         
+        public static void FireAim1(double x, double y)
+	{
+		
+		
+		ObjectPool.newmyBulletsPowerUp(x, y);
+	}
+        public static void FireAim0(double x, double y)
+	{
+		
+		
+		ObjectPool.newmyBulletsPowerUp(x, y);
+	}
+        
         public static void FireRound(double x, double y, Player player)
 	{
 		for (int i = 0; i < 360; i += 60 )

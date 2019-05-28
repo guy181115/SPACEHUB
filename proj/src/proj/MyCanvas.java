@@ -163,6 +163,19 @@ public class MyCanvas extends Canvas implements Runnable {
 
             }
         }
+        if(Level.getLevel()==26){
+            boss = true;
+            Enemy.boss1 = true;
+            ObjectPool.newBoss1();
+            title.drawWin(gBuf);
+            if (shotkey_state == SHOT_DOWN) {
+                Score.compareScore();
+                init();
+
+            }
+        }
+        
+        
         if(Level.getLevel()==5){
             boss = true;
             Enemy.boss1 = true;
@@ -191,7 +204,7 @@ public class MyCanvas extends Canvas implements Runnable {
         }
         if(Level.getLevel()==15){
             boss = true;
-            Enemy.boss2 = true;
+            Enemy.boss3 = true;
             ObjectPool.newBoss3();
            /* title.drawWin(gBuf);
             if (shotkey_state == SHOT_DOWN) {
@@ -202,10 +215,21 @@ public class MyCanvas extends Canvas implements Runnable {
         }
         
         
-        if(Level.getLevel()==15){
+        if(Level.getLevel()==20){
             boss = true;
-            Enemy.boss3 = true;
-            ObjectPool.newBoss3();
+            Enemy.boss4 = true;
+            ObjectPool.newBoss4();
+           /* title.drawWin(gBuf);
+            if (shotkey_state == SHOT_DOWN) {
+                Score.compareScore();
+                init();
+
+            }*/
+        }
+        if(Level.getLevel()==25){
+            boss = true;
+            Enemy.boss5 = true;
+            ObjectPool.newBoss5();
            /* title.drawWin(gBuf);
             if (shotkey_state == SHOT_DOWN) {
                 Score.compareScore();
@@ -218,7 +242,7 @@ public class MyCanvas extends Canvas implements Runnable {
         objectpool.getColision();
         objectpool.movePlayer(keyinput);
 
-        if (counter % (250 - Level.getLevel() * 10) == 0 && boss == false) {
+        if (counter % (250 - Level.getLevel() * 10) == 0 && boss == false&&Level.getLevel()<25) {
             ObjectPool.newEnemy(100 + random.nextInt(300), 0);
         }
         

@@ -81,6 +81,16 @@ public class Bullet extends GameObject
                         ObjectPool.newBullet(x, y, i, 3);
 		}
 	}
+        public static void FireRound3(double x, double y)
+	{
+		
+                for (int j = 0; j < 360; j += 30 )
+		{
+			ObjectPool.newBullet(x, y, j, 3);
+                        ObjectPool.newBullet(x, y, j, 3);
+                        ObjectPool.newBullet(x, y, j, 3);
+		}
+	}
 
 	
 	public static void FireAim(double x, double y, Player player)
@@ -107,7 +117,16 @@ public class Bullet extends GameObject
 		ObjectPool.newBullet(x, y, degree-10, 4);
               
 	}
-        
+        public static void FireAim4(double x, double y, Player player)
+	{
+		double degree = Math.toDegrees(Math.atan2(player.y - y, player.x - x));
+		ObjectPool.newBullet(x, y, degree, 4);
+		ObjectPool.newBullet(x, y, degree+10, 4);
+		ObjectPool.newBullet(x, y, degree-10, 4);
+                ObjectPool.newBullet(x, y, degree+20, 4);
+		ObjectPool.newBullet(x, y, degree-20, 4);
+              
+	}
         
 }
 

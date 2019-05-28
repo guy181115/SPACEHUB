@@ -36,6 +36,9 @@ public class Enemy extends GameObject
         public static boolean boss1 = false;
         public static boolean boss2 = false;
         public static boolean boss3 = false;
+        public static boolean boss4 = false;
+        public static boolean boss5 = false;
+        public static boolean boss6 = false;
 	Random random;
 	Enemy(Player iplayer)
 	{
@@ -96,6 +99,32 @@ public class Enemy extends GameObject
 		startshoot = false;
                 
 	}
+        public void activate5(double ix, double iy)
+	{
+		x = ix;
+		y = iy;
+		type = 5;
+		active = true;			
+		Str = 500; //Str 1 = 2 Shot 
+		counter = 0;
+		boolean ishit = false;
+		shootnum = Level.getLevel();
+		startshoot = false;
+                
+	}
+        public void activate6(double ix, double iy)
+	{
+		x = ix;
+		y = iy;
+		type = 6;
+		active = true;			
+		Str = 800; //Str 1 = 2 Shot 
+		counter = 0;
+		boolean ishit = false;
+		shootnum = Level.getLevel();
+		startshoot = false;
+                
+	}
 
 	
 	public void hit()
@@ -131,10 +160,26 @@ public class Enemy extends GameObject
                                 case 4:
 					Score.addScore(200);
                                         Level.addLevel();
+                                        ObjectPool.newItems(280, 0,4);
                                         boss = false;
                                         System.out.println(boss);
-					break;        
+					break;
+                                case 5:
+					Score.addScore(250);
+                                        Level.addLevel();
+                                        ObjectPool.newItems(280, 0,5);
+                                        boss = false;
+                                        System.out.println(boss);
+                                        
+					break;               
 				default:
+                                    
+                                case 6:
+					Score.addScore(300);
+                                        Level.addLevel();
+                                        boss = false;
+                                        System.out.println("YOU WIN");
+					break;           
 			}
 			
 			ObjectPool.newParticle(x, y, 45, 2);
@@ -165,7 +210,13 @@ public class Enemy extends GameObject
 				break;
                         case 4:
 				move_boss3();
-				break;        
+				break;
+                        case 5:
+				move_boss4();
+				break;   
+                        case 6:
+				move_boss5();
+				break;           
 			default:
 		}
 	}
@@ -310,6 +361,71 @@ public class Enemy extends GameObject
                    
 		}
 	}
+        void move_boss4()
+	{       if(y<=40)
+                y++;
+		counter++;
+		
+		
+		
+	
+		if ((counter%60)==0)
+		{
+			
+			startshoot = true;
+		}
+		
+		
+		if (startshoot)
+		{
+                    if (((counter%150)==0))
+			{
+				Bullet.FireAim3(x-25, y+80, player);
+				
+			}
+                    if (((counter%40)==0))
+			{
+				Bullet.FireAim2(x-25, y+80, player);
+				
+			}
+                   
+		}
+	}
+        void move_boss5()
+	{       if(y<=40)
+                y++;
+		counter++;
+		
+		
+		
+	
+		if ((counter%60)==0)
+		{
+			
+			startshoot = true;
+		}
+		
+		
+		if (startshoot)
+		{
+                    if (((counter%150)==0))
+			{
+				Bullet.FireRound2(x-10, y+80);
+				
+			}
+                    if (((counter%80)==0))
+			{
+				Bullet.FireRound3(x-10, y+80);
+				
+			}
+                    if (((counter%40)==0))
+			{
+				Bullet.FireAim2(x-25, y+80, player);
+				
+			}
+                   
+		}
+	}
 	
 	
 	public void draw(Graphics g)
@@ -353,7 +469,18 @@ public class Enemy extends GameObject
                                         g.setColor(Color.WHITE);
                                         g.drawImage(image,(int)x-160, (int)y+10, (int)301, (int)123,null);
 					break;
-                                        
+                                case 5:
+			
+                                        image = toolkit.getImage("boss4.gif");
+                                        g.setColor(Color.WHITE);
+                                        g.drawImage(image,(int)x-160, (int)y+10, (int)280, (int)104,null);
+					break;        
+                                case 6:
+			
+                                        image = toolkit.getImage("boss3new.gif");
+                                        g.setColor(Color.WHITE);
+                                        g.drawImage(image,(int)x-160, (int)y+10, (int)301, (int)123,null);
+					break;        
 				default:
 			}
 		}

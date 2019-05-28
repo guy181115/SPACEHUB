@@ -86,10 +86,17 @@ public class Items extends GameObject {
 				break;     
                         case 4:
                                 move_item0();
+                                shield = false;
+                                special = false;
+                                special2 = false;
                                 special3 = true;
 				break; 
                         case 5:
                                 move_item0();
+                                shield = false;
+                                special = false;
+                                special2 = false;
+                                special3 = false;
                                 special4 = true;
 				break; 
 			default:

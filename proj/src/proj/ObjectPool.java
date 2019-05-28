@@ -188,6 +188,28 @@ public class ObjectPool
 		}
 		return -1;	
         }
+        public static int newBoss4(){
+            for (int i = 0; i < 1; i++)
+		{
+			if ((enemy[i].active) == false)
+			{
+				enemy[i].activate5(310, 0);
+				return i;
+			}
+		}
+		return -1;	
+        }
+        public static int newBoss5(){
+            for (int i = 0; i < 1; i++)
+		{
+			if ((enemy[i].active) == false)
+			{
+				enemy[i].activate6(310, 0);
+				return i;
+			}
+		}
+		return -1;	
+        }
         
        public static int newItems(double ix, double iy){
            for (int i = 0; i < ITEMS_MAX; i++)
@@ -285,6 +307,21 @@ public class ObjectPool
                                 powerup4==false){
                                 
                         SpecialBullet.FireAim(player.x,player.y);
+                        
+                        }
+                        else if(powerup==true&&powerup2==true&&powerup3==true&&
+                                powerup4==false){
+                                
+                        SpecialBullet.FireAim(player.x,player.y);
+                        SpecialBullet.FireAim1(player.x+80,player.y);
+                        
+                        }
+                        else if(powerup==true&&powerup2==true&&powerup3==true&&
+                                powerup4==true){
+                                
+                        SpecialBullet.FireAim(player.x,player.y);
+                        SpecialBullet.FireAim1(player.x+80,player.y);
+                        SpecialBullet.FireAim0(player.x-80,player.y);
                         
                         }
                             
@@ -391,6 +428,22 @@ public class ObjectPool
 							
 							mybullet[j].active = false;
                                                     }
+                                                      if (getDistance(enemy[i], mybullet[j]) < DIST_BOSS3_TO_MYBULLET&& boss4 == true)
+                                                    {
+							newParticle(mybullet[j].x, mybullet[j].y, 270, 2);
+							
+							enemy[i].hit();
+							
+							mybullet[j].active = false;
+                                                    }
+                                                      if (getDistance(enemy[i], mybullet[j]) < DIST_BOSS3_TO_MYBULLET&& boss5 == true)
+                                                    {
+							newParticle(mybullet[j].x, mybullet[j].y, 270, 2);
+							
+							enemy[i].hit();
+							
+							mybullet[j].active = false;
+                                                    }
                                                 }
                                                 
                                                 
@@ -430,6 +483,22 @@ public class ObjectPool
 							specialbullet[j].active = false;
                                                     }
                                                     if (getDistance(enemy[i], specialbullet[j]) < DIST_BOSS3_TO_MYBULLET&& boss3 == true)
+                                                    {
+							newParticle(specialbullet[j].x, specialbullet[j].y, 270, 2);
+							
+							enemy[i].hit();
+							
+							specialbullet[j].active = false;
+                                                    }
+                                                    if (getDistance(enemy[i], specialbullet[j]) < DIST_BOSS3_TO_MYBULLET&& boss4 == true)
+                                                    {
+							newParticle(specialbullet[j].x, specialbullet[j].y, 270, 2);
+							
+							enemy[i].hit();
+							
+							specialbullet[j].active = false;
+                                                    }
+                                                    if (getDistance(enemy[i], specialbullet[j]) < DIST_BOSS3_TO_MYBULLET&& boss5 == true)
                                                     {
 							newParticle(specialbullet[j].x, specialbullet[j].y, 270, 2);
 							
@@ -520,12 +589,12 @@ public class ObjectPool
                                     }
                                     else if(Items.special3==true)
                                     {
-                                        powerup = true;
+                                        powerup3 = true;
                                         Items.special=false;
                                     }
                                     else if(Items.special4==true)
                                     {
-                                        powerup = true;
+                                        powerup4 = true;
                                         Items.special=false;
                                     }
 					else
