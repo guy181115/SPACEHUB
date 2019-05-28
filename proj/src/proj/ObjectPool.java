@@ -361,7 +361,7 @@ public class ObjectPool
 				{ 
                                     if(Items.shield==true)
                                     {
-
+                                        Items.shield=false;
                                         invulnerable = true;
 
                                     }

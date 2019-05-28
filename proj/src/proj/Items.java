@@ -54,6 +54,7 @@ public class Items extends GameObject {
 		{
 			case 0:
 				move_item0();
+                                shield = false;
 				break;
                         case 1:
                                 move_item0();
@@ -75,6 +76,7 @@ public class Items extends GameObject {
 		
 		if ( (600 < y) )
 		{
+                        shield = true;
 			active = false;
 		}
 		
