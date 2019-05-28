@@ -201,16 +201,7 @@ public class MyCanvas extends Canvas implements Runnable {
             }*/
         }
         
-        if(Level.getLevel()==11){
-            
-            ObjectPool.newItems(100 + random.nextInt(300), 0,2);
-           /* title.drawWin(gBuf);
-            if (shotkey_state == SHOT_DOWN) {
-                Score.compareScore();
-                init();
-
-            }*/
-        }
+        
         if(Level.getLevel()==15){
             boss = true;
             Enemy.boss3 = true;
