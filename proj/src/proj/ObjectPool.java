@@ -303,10 +303,7 @@ public class ObjectPool
 					x++;
                                         items[i].active = false;
 					
-					for (int j = 0; j < 360; j += 20)
-					{
-						newParticle(player.x, player.y, j, 2);
-					}
+					
 					
 				}
 			}
