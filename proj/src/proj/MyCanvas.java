@@ -179,7 +179,7 @@ public class MyCanvas extends Canvas implements Runnable {
             ObjectPool.newEnemy(100 + random.nextInt(300), 0);
         }
         
-        if (counter % (1000 - Level.getLevel() * 10) == 0 && boss == false) {
+        if (counter % (800 - Level.getLevel() * 10) == 0 ) {
             ObjectPool.newItems(100 + random.nextInt(300), 0);
         }
 

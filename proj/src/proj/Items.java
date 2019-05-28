@@ -36,7 +36,7 @@ public class Items extends GameObject {
 	{
 		x = ix;
 		y = iy;
-		type = (int)(Math.random()+0.5);
+		type = 0;
 		active = true;			
 		Str = 1; //Str 1 = 2 Shot 
 		counter = 0;
