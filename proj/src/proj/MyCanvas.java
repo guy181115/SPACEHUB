@@ -135,6 +135,7 @@ public class MyCanvas extends Canvas implements Runnable {
     
     void gameMain() {
         space(gBuf);
+        boss = false;
         if(paused == true){
          
          
