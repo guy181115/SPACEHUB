@@ -134,7 +134,9 @@ public class MyCanvas extends Canvas implements Runnable {
     
     
     void gameMain() {
+        
         space(gBuf);
+        hearts(gBuf);
         boss = false;
         if(paused == true){
          
@@ -152,7 +154,7 @@ public class MyCanvas extends Canvas implements Runnable {
             title.drawGameover(gBuf);
             
             if (shotkey_state == SHOT_DOWN) {
-
+                ObjectPool.x=3;
                 Score.compareScore();
                 init();
 
@@ -207,7 +209,12 @@ public class MyCanvas extends Canvas implements Runnable {
         image = toolkit.getImage("space.gif");
          g.drawImage(image, 0, 0, this);
         }
-        
+         public void hearts(Graphics g){
+             Toolkit toolkit = Toolkit.getDefaultToolkit();
+           image = toolkit.getImage("heart.gif");
+         g.drawImage(image, 10, 490,(int)40,(int)40, this);
+         g.drawString("X"+ObjectPool.x, 50, 516);
+         }
     }
    
     

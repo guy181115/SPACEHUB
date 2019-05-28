@@ -202,7 +202,7 @@ public class ObjectPool
 					if(x==0)
                                         {
 					player.active = false;
-                                        x=3;
+                                        
                                         }
 
 					
