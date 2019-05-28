@@ -57,7 +57,7 @@ public class Enemy extends GameObject
 		y = iy;
 		type = 2;
 		active = true;			
-		Str = 100; //Str 1 = 2 Shot 
+		Str = 50; //Str 1 = 2 Shot 
 		counter = 0;
 		boolean ishit = false;
 		shootnum = Level.getLevel();
@@ -170,7 +170,7 @@ public class Enemy extends GameObject
 		}
 	}
         void move_boss1()
-	{       if(y<=20)
+	{       if(y<=40)
                 y++;
 		counter++;
 		
@@ -187,9 +187,9 @@ public class Enemy extends GameObject
 		if (startshoot)
 		{
                     
-                     if (((counter%30)==0))
+                     if (((counter%50)==0))
 			{
-				Bullet.FireAim(x, y+50, player);
+				Bullet.FireAim(x-25, y+80, player);
 				
 			}
 		}
@@ -222,7 +222,7 @@ public class Enemy extends GameObject
 			
                                         image = toolkit.getImage("boss1.gif");
                                         g.setColor(Color.WHITE);
-                                        g.drawImage(image,(int)x-30, (int)y, (int)128, (int)128,null);
+                                        g.drawImage(image,(int)x-70, (int)y, (int)128, (int)128,null);
 					break;
                                         
 				default:

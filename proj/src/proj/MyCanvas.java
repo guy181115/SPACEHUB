@@ -160,7 +160,7 @@ public class MyCanvas extends Canvas implements Runnable {
 
             }
         }
-        if(Level.getLevel()==3){
+        if(Level.getLevel()>=3){
             boss = true;
             ObjectPool.newBoss();
            /* title.drawWin(gBuf);

@@ -27,7 +27,7 @@ public class ObjectPool
 	static final int DIST_PLAYER_TO_BULLET = 30  ; //hit box ของผู้เล่นกะกระสุนอีกฝั่ง
 	static final int DIST_PLAYER_TO_ENEMY = 25; //hit box ของผู้เล่นกะยานศัตรู
 	static final int DIST_ENEMY_TO_MYBULLET = 25; //hit box ของยานศัตรูกะกระสุนเรา
-	static final int DIST_BOSS_TO_MYBULLET = 80;
+	static final int DIST_BOSS_TO_MYBULLET = 70;
 	
 	static final int BULLET_MAX = 100;
 	static final int ENEMY_MAX = 100;
@@ -127,7 +127,7 @@ public class ObjectPool
 		{
 			if ((enemy[i].active) == false)
 			{
-				enemy[i].activate2(280, 0);
+				enemy[i].activate2(300, 0);
 				return i;
 			}
 		}
