@@ -164,9 +164,6 @@ public class MyCanvas extends Canvas implements Runnable {
             }
         }
         if(Level.getLevel()==26){
-            boss = true;
-            Enemy.boss1 = true;
-            ObjectPool.newBoss1();
             title.drawWin(gBuf);
             if (shotkey_state == SHOT_DOWN) {
                 Score.compareScore();
@@ -254,7 +251,7 @@ public class MyCanvas extends Canvas implements Runnable {
             ObjectPool.newItems(100 + random.nextInt(300), 0);
         }
 
-        if ((counter % 500) == 0/*&&Level.getLevel()<3*/&& boss == false) {
+        if ((counter % 500) == 0/*&&Level.getLevel()<3*/&& boss == false&&Level.getLevel()<26) {
             Level.addLevel();
         }
 

@@ -67,7 +67,7 @@ public class Enemy extends GameObject
 		y = iy;
 		type = 2;
 		active = true;			
-		Str = 100; //Str 1 = 2 Shot 
+		Str = 500; //Str 1 = 2 Shot 
 		counter = 0;
 		boolean ishit = false;
 		shootnum = Level.getLevel();
@@ -79,7 +79,7 @@ public class Enemy extends GameObject
 		y = iy;
 		type = 3;
 		active = true;			
-		Str = 200; //Str 1 = 2 Shot 
+		Str = 800; //Str 1 = 2 Shot 
 		counter = 0;
 		boolean ishit = false;
 		shootnum = Level.getLevel();
@@ -92,7 +92,7 @@ public class Enemy extends GameObject
 		y = iy;
 		type = 4;
 		active = true;			
-		Str = 300; //Str 1 = 2 Shot 
+		Str = 1000; //Str 1 = 2 Shot 
 		counter = 0;
 		boolean ishit = false;
 		shootnum = Level.getLevel();
@@ -105,7 +105,7 @@ public class Enemy extends GameObject
 		y = iy;
 		type = 5;
 		active = true;			
-		Str = 500; //Str 1 = 2 Shot 
+		Str = 1500; //Str 1 = 2 Shot 
 		counter = 0;
 		boolean ishit = false;
 		shootnum = Level.getLevel();
@@ -118,7 +118,7 @@ public class Enemy extends GameObject
 		y = iy;
 		type = 6;
 		active = true;			
-		Str = 800; //Str 1 = 2 Shot 
+		Str = 1800; //Str 1 = 2 Shot 
 		counter = 0;
 		boolean ishit = false;
 		shootnum = Level.getLevel();
@@ -388,6 +388,11 @@ public class Enemy extends GameObject
 				Bullet.FireAim2(x-25, y+80, player);
 				
 			}
+                    if (((counter%40)==0))
+			{
+				Bullet.FireAim(x-25, y+80, player);
+				
+			}
                    
 		}
 	}
@@ -477,7 +482,7 @@ public class Enemy extends GameObject
 					break;        
                                 case 6:
 			
-                                        image = toolkit.getImage("boss3new.gif");
+                                        image = toolkit.getImage("lastboss.gif");
                                         g.setColor(Color.WHITE);
                                         g.drawImage(image,(int)x-160, (int)y+10, (int)301, (int)123,null);
 					break;        
