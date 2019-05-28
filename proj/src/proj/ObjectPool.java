@@ -3,6 +3,9 @@ package proj;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static proj.Enemy.*;
 //import static proj.Enemy.type;
@@ -37,7 +40,7 @@ public class ObjectPool
 	static final int ENEMY_MAX = 100;
 	static final int PARTICLE_MAX = 100;
 	static final int MYBULLET_MAX = 5; //จำนวนกระสุนที่ยิงออกไปต่อการยิง 1 ครั้ง
-	
+	public static boolean invulnerable = false;
         static final int ITEMS_MAX = 50;
 	
 	ObjectPool()
@@ -225,6 +228,7 @@ public class ObjectPool
 	}
 
 	public static int x = 3;
+        public static int y = 5;
 	public void getColision()
 	{
             
@@ -233,7 +237,7 @@ public class ObjectPool
 			if ((bullet[i].active)&&(player.active))
 			{
 				
-				if (getDistance(player, bullet[i]) < DIST_PLAYER_TO_BULLET)
+				if (getDistance(player, bullet[i]) < DIST_PLAYER_TO_BULLET&&invulnerable == false)
 				{
                                     x--;
 					if(x==0)
@@ -251,6 +255,25 @@ public class ObjectPool
 					
 					bullet[i].active = false;
 				}
+                                if (getDistance(player, bullet[i]) < DIST_PLAYER_TO_BULLET&&invulnerable == true)
+				{
+                                    y--;
+					if(y==0)
+                                        {
+					invulnerable = false;
+                                        
+                                        }
+
+					
+					for (int j = 0; j < 360; j += 20)
+					{
+						newParticle(player.x, player.y, j, 2);
+					}
+
+					
+					bullet[i].active = false;
+				}
+                                
 			}
         }
 
@@ -314,6 +337,19 @@ public class ObjectPool
 					}
 					
 				}
+                                if (getDistance(player, enemy[i]) < DIST_PLAYER_TO_ENEMY)
+				{
+					
+					player.active = false;
+
+					
+					for (int j = 0; j < 360; j += 20)
+					{
+						newParticle(player.x, player.y, j, 2);
+					}
+					
+				}
+                                
 			}
         }
         
@@ -322,9 +358,16 @@ public class ObjectPool
 			{
 				
 				if (getDistance(player, items[i]) < DIST_PLAYER_TO_ITEMS)
-				{
-					
+				{ 
+                                    if(Items.shield==true)
+                                    {
+
+                                        invulnerable = true;
+
+                                    }
+					else
 					x++;
+                                    
                                         items[i].active = false;
 					
 					

@@ -281,9 +281,9 @@ public class Enemy extends GameObject
                                        
                                 case 3:
 			
-                                        image = toolkit.getImage("boss2.gif");
+                                        image = toolkit.getImage("boss2new.gif");
                                         g.setColor(Color.WHITE);
-                                        g.drawImage(image,(int)x-120, (int)y+10, (int)256, (int)256,null);
+                                        g.drawImage(image,(int)x-130, (int)y+10, (int)256, (int)256,null);
 					break;
                                         
 				default:

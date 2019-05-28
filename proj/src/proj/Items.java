@@ -7,6 +7,7 @@ package proj;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.concurrent.ThreadLocalRandom;
 import static proj.Title.image;
 
 
@@ -19,6 +20,7 @@ public class Items extends GameObject {
 	
 	boolean ishit = false;
 	public static boolean boss = false;
+        public static boolean shield = false;
 	Player player;
 	
 	boolean startshoot;
@@ -36,7 +38,7 @@ public class Items extends GameObject {
 	{
 		x = ix;
 		y = iy;
-		type = 0;
+		type = ThreadLocalRandom.current().nextInt(0,2);
 		active = true;			
 		Str = 1; //Str 1 = 2 Shot 
 		counter = 0;
@@ -51,15 +53,19 @@ public class Items extends GameObject {
 		switch(type)
 		{
 			case 0:
-				move_enemy0();
+				move_item0();
 				break;
-			
+                        case 1:
+                                move_item0();
+                                shield = true;
+				break;
 			default:
+                                
 		}
 	}
          
          
-         void move_enemy0()
+         void move_item0()
 	{
 		counter++;
 		y++;
@@ -78,10 +84,20 @@ public class Items extends GameObject {
          
          public void draw(Graphics g)
 	{
+            
             Toolkit toolkit = Toolkit.getDefaultToolkit();
-            image = toolkit.getImage("heart.gif");
-            g.setColor(Color.WHITE);
-            g.drawImage(image,(int)x+2, (int)y-16, (int)32, (int)32,null);
-					
+            switch(type)
+            { 
+                case 0:
+                       image = toolkit.getImage("heart.gif");
+                       g.setColor(Color.WHITE);
+                       g.drawImage(image,(int)x+2, (int)y-16, (int)32, (int)32,null);
+                       break;
+                case 1:
+                       image = toolkit.getImage("shield.png");
+                       g.setColor(Color.WHITE);
+                       g.drawImage(image,(int)x+2, (int)y-16, (int)32, (int)32,null);
+                       break;
+            }			
         }
 }

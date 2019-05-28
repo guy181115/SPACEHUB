@@ -3,6 +3,7 @@ package proj;
 
 import java.awt.*;
 import java.awt.event.*;
+import static proj.ObjectPool.invulnerable;
 import static proj.Title.image;
 
 
@@ -44,9 +45,10 @@ public class Player extends GameObject
 	
 	public void draw(Graphics g)
 	{
+            Toolkit toolkit = Toolkit.getDefaultToolkit();
 		if (active)
 		{
-                    Toolkit toolkit = Toolkit.getDefaultToolkit();
+                    
                     image = toolkit.getImage("playerShip2.gif");
 			g.setColor(Color.red);
                         
@@ -57,7 +59,13 @@ public class Player extends GameObject
 			//g.drawLine((int)(x), (int)(y-14), (int)(x+10), (int)(y+7));
 			//g.drawLine((int)(x-10), (int)(y+7), (int)(x+10), (int)(y+7));
 		}
-                
+                if(invulnerable == true)
+                {
+                    image = toolkit.getImage("shield.png");
+			g.setColor(Color.red);
+                        
+                        g.drawImage(image, (int)(x-40), (int)(y-40), (int)80, (int)80,null );
+                }
                 
                 
 	}

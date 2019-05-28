@@ -93,7 +93,7 @@ public class Bullet extends GameObject
         public static void FireAim3(double x, double y, Player player)
 	{
 		double degree = Math.toDegrees(Math.atan2(player.y - y, player.x - x));
-		ObjectPool.newBullet(x, y, degree, 6);
+		ObjectPool.newBullet(x, y, degree, 4);
 		ObjectPool.newBullet(x, y, degree+10, 4);
 		ObjectPool.newBullet(x, y, degree-10, 4);
               
