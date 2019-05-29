@@ -42,13 +42,15 @@ public class Game extends JFrame
 		setSize(600, 600);		//resolution
             
                 AudioInputStream inputStream = null;
-            try {
-                inputStream = AudioSystem.getAudioInputStream(new File("bf.wav"));
-            } catch (UnsupportedAudioFileException ex) {
-                
-            } catch (IOException ex) {
-                
-            }
+            
+                    try {
+                        inputStream = AudioSystem.getAudioInputStream(new File("bf.wav"));
+                    } catch (UnsupportedAudioFileException ex) {
+                        Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+             
                 Clip clip = null;
             try {
                 clip = AudioSystem.getClip();

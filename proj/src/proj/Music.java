@@ -5,7 +5,6 @@
  */
 package proj;
 
-import sun.audio.AudioData;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -14,7 +13,7 @@ import java.io.File;
 
 public class Music {
     Clip clip;
-    AudioData data;
+    
     public void setFile (String s){
 
         try {
