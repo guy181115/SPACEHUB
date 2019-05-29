@@ -148,7 +148,9 @@ public class Enemy extends GameObject
                                         Level.addLevel();
                                         ObjectPool.newItems(280, 0,2);
                                         boss = false;
+                                        
                                         System.out.println(boss);
+                                        
 					break;
                                 case 3:
 					Score.addScore(150);
@@ -179,6 +181,9 @@ public class Enemy extends GameObject
                                         if(Level.getLevel() == 25)
                                         Level.addLevel();
                                         boss = false;
+                                        Music sound = new Music(); 
+                                        sound.setFile("Victory.wav");
+                                        sound.play();
                                         System.out.println("YOU WIN");
 					break;           
 			}
