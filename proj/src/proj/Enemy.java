@@ -67,7 +67,7 @@ public class Enemy extends GameObject
 		y = iy;
 		type = 2;
 		active = true;			
-		Str = 500; //Str 1 = 2 Shot 
+		Str = 200; //Str 1 = 2 Shot 
 		counter = 0;
 		boolean ishit = false;
 		shootnum = Level.getLevel();

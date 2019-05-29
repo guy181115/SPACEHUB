@@ -39,6 +39,7 @@ public class Particle extends GameObject
 	
 	public void draw(Graphics g)
 	{
+            
                 Toolkit toolkit = Toolkit.getDefaultToolkit();
                 image = toolkit.getImage("fireball2.gif");
 		g.setColor(Color.gray);

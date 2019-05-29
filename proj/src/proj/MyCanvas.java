@@ -103,7 +103,7 @@ public class MyCanvas extends Canvas implements Runnable {
                         score.drawHiScore(gBuf);
 
                         if (shotkey_state == SHOT_DOWN) {
-
+                             
                             scene = SCENE_GAMEMAIN;
                         }
                         break;
@@ -161,18 +161,30 @@ public class MyCanvas extends Canvas implements Runnable {
                 ObjectPool.x=3;
                 Score.compareScore();
                 init();
-
+                ObjectPool.powerup2 =false;
+                ObjectPool.powerup4 = false;
+                ObjectPool.powerup3 = false;
             }
         }
         if(Level.getLevel()==26){
-            title.drawWin(gBuf);
+            
+            
+                title.drawWin(gBuf);
+                
+            
             if (shotkey_state == SHOT_DOWN) {
+                ObjectPool.powerup =false;
+                ObjectPool.y=0;
+                Items.special=false;
+                ObjectPool.x=3;
                 Score.compareScore();
                 init();
-
-            }
+                ObjectPool.powerup2 =false;
+                ObjectPool.powerup4 = false;
+                ObjectPool.powerup3 = false;
+            
         }
-        
+        }
         
         if(Level.getLevel()==5){
             boss = true;
@@ -258,6 +270,10 @@ public class MyCanvas extends Canvas implements Runnable {
 
         if ((shotkey_state == SHOT_PRESSED) && (counter % 3 == 0)) {
             objectpool.shotPlayer();
+            Music sound = new Music(); 
+                            sound.setFile("laser1.wav");
+                            sound.play();
+
         }
 
         objectpool.drawAll(gBuf);

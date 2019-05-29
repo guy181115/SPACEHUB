@@ -355,6 +355,9 @@ public class ObjectPool
 				
 				if (getDistance(player, bullet[i]) < DIST_PLAYER_TO_BULLET&&invulnerable == false)
 				{
+                                    Music sound = new Music(); 
+                                                        sound.setFile("8bit_bomb_explosion.wav");
+                                                        sound.play();
                                     x--;
 					if(x==0)
                                         {
@@ -375,6 +378,9 @@ public class ObjectPool
 				{
                                     
                                     y--;
+                                    Music sound = new Music(); 
+                                                        sound.setFile("pickitemshield.wav");
+                                                        sound.play();
 					if(y==0)
                                         {
 					invulnerable = false;
@@ -406,6 +412,9 @@ public class ObjectPool
                                                 {
                                                     if (getDistance(enemy[i], mybullet[j]) < DIST_BOSS1_TO_MYBULLET&& boss1 == true)
                                                     {
+                                                        Music sound = new Music(); 
+                                                        sound.setFile("8bit_bomb_explosion.wav");
+                                                        sound.play();
 							newParticle(mybullet[j].x, mybullet[j].y, 270, 2);
 							
 							enemy[i].hit();
@@ -414,6 +423,9 @@ public class ObjectPool
                                                     }
                                                     if (getDistance(enemy[i], mybullet[j]) < DIST_BOSS2_TO_MYBULLET&& boss2 == true)
                                                     {
+                                                        Music sound = new Music(); 
+                                                        sound.setFile("8bit_bomb_explosion.wav");
+                                                        sound.play();
 							newParticle(mybullet[j].x, mybullet[j].y, 270, 2);
 							
 							enemy[i].hit();
@@ -422,6 +434,9 @@ public class ObjectPool
                                                     }
                                                      if (getDistance(enemy[i], mybullet[j]) < DIST_BOSS3_TO_MYBULLET&& boss3 == true)
                                                     {
+                                                        Music sound = new Music(); 
+                                                        sound.setFile("8bit_bomb_explosion.wav");
+                                                        sound.play();
 							newParticle(mybullet[j].x, mybullet[j].y, 270, 2);
 							
 							enemy[i].hit();
@@ -430,6 +445,9 @@ public class ObjectPool
                                                     }
                                                       if (getDistance(enemy[i], mybullet[j]) < DIST_BOSS3_TO_MYBULLET&& boss4 == true)
                                                     {
+                                                        Music sound = new Music(); 
+                                                        sound.setFile("8bit_bomb_explosion.wav");
+                                                        sound.play();
 							newParticle(mybullet[j].x, mybullet[j].y, 270, 2);
 							
 							enemy[i].hit();
@@ -438,6 +456,9 @@ public class ObjectPool
                                                     }
                                                       if (getDistance(enemy[i], mybullet[j]) < DIST_BOSS3_TO_MYBULLET&& boss5 == true)
                                                     {
+                                                        Music sound = new Music(); 
+                                                        sound.setFile("8bit_bomb_explosion.wav");
+                                                        sound.play();
 							newParticle(mybullet[j].x, mybullet[j].y, 270, 2);
 							
 							enemy[i].hit();
@@ -449,7 +470,10 @@ public class ObjectPool
                                                 
                                                  if (getDistance(enemy[i], mybullet[j]) < DIST_ENEMY_TO_MYBULLET)
                                                     {
-                                                        
+                                                        Music sound = new Music(); 
+                                                        sound.setFile("8bit_bomb_explosion.wav");
+                                                        sound.play();
+
 							newParticle(mybullet[j].x, mybullet[j].y, 270, 2);
 							
 							enemy[i].hit();
@@ -468,6 +492,9 @@ public class ObjectPool
                                                 {
                                                     if (getDistance(enemy[i], specialbullet[j]) < DIST_BOSS1_TO_MYBULLET&& boss1 == true)
                                                     {
+                                                        Music sound = new Music(); 
+                                                        sound.setFile("8bit_bomb_explosion.wav");
+                                                        sound.play();
 							newParticle(specialbullet[j].x, specialbullet[j].y, 270, 2);
 							
 							enemy[i].hit();
@@ -476,6 +503,9 @@ public class ObjectPool
                                                     }
                                                     if (getDistance(enemy[i], specialbullet[j]) < DIST_BOSS2_TO_MYBULLET&& boss2 == true)
                                                     {
+                                                        Music sound = new Music(); 
+                                                        sound.setFile("8bit_bomb_explosion.wav");
+                                                        sound.play();
 							newParticle(specialbullet[j].x, specialbullet[j].y, 270, 2);
 							
 							enemy[i].hit();
@@ -484,6 +514,9 @@ public class ObjectPool
                                                     }
                                                     if (getDistance(enemy[i], specialbullet[j]) < DIST_BOSS3_TO_MYBULLET&& boss3 == true)
                                                     {
+                                                        Music sound = new Music(); 
+                                                        sound.setFile("8bit_bomb_explosion.wav");
+                                                        sound.play();
 							newParticle(specialbullet[j].x, specialbullet[j].y, 270, 2);
 							
 							enemy[i].hit();
@@ -492,6 +525,9 @@ public class ObjectPool
                                                     }
                                                     if (getDistance(enemy[i], specialbullet[j]) < DIST_BOSS3_TO_MYBULLET&& boss4 == true)
                                                     {
+                                                        Music sound = new Music(); 
+                                                        sound.setFile("8bit_bomb_explosion.wav");
+                                                        sound.play();
 							newParticle(specialbullet[j].x, specialbullet[j].y, 270, 2);
 							
 							enemy[i].hit();
@@ -500,6 +536,9 @@ public class ObjectPool
                                                     }
                                                     if (getDistance(enemy[i], specialbullet[j]) < DIST_BOSS3_TO_MYBULLET&& boss5 == true)
                                                     {
+                                                        Music sound = new Music(); 
+                                                        sound.setFile("8bit_bomb_explosion.wav");
+                                                        sound.play();
 							newParticle(specialbullet[j].x, specialbullet[j].y, 270, 2);
 							
 							enemy[i].hit();
@@ -511,7 +550,9 @@ public class ObjectPool
                                                 
                                                  if (getDistance(enemy[i], specialbullet[j]) < DIST_ENEMY_TO_MYBULLET)
                                                     {
-                                                        
+                                                         Music sound = new Music(); 
+                                                        sound.setFile("8bit_bomb_explosion.wav");
+                                                        sound.play();
 							newParticle(specialbullet[j].x, specialbullet[j].y, 270, 2);
 							
 							enemy[i].hit();
@@ -570,6 +611,9 @@ public class ObjectPool
 				{ 
                                     if(Items.shield==true&&invulnerable == false)
                                     {
+                                        Music sound = new Music(); 
+                                                        sound.setFile("pickitemshield.wav");
+                                                        sound.play();
                                         y += 5;
                                         Items.shield=false;
                                         invulnerable = true;
@@ -578,30 +622,49 @@ public class ObjectPool
                                     }
                                     else if(Items.special==true)
                                     {
+                                        Music sound = new Music(); 
+                                                        sound.setFile("but.wav");
+                                                        sound.play();
                                         powerup = true;
                                         Items.special=false;
+                                        items[i].active = false;
                                     }
                                     else if(Items.special2==true)
                                     {
+                                        Music sound = new Music(); 
+                                                        sound.setFile("but.wav");
+                                                        sound.play();
                                         powerup = true;
                                         powerup2 = true;
                                         Items.special2=false;
+                                        items[i].active = false;
                                     }
                                     else if(Items.special3==true)
                                     {
+                                        Music sound = new Music(); 
+                                                        sound.setFile("but.wav");
+                                                        sound.play();
                                         powerup3 = true;
                                         Items.special=false;
+                                        items[i].active = false;
                                     }
                                     else if(Items.special4==true)
                                     {
+                                        Music sound = new Music(); 
+                                                        sound.setFile("but.wav");
+                                                        sound.play();
                                         powerup4 = true;
                                         Items.special=false;
-                                    }
-					else
-					x++;
-                                    
                                         items[i].active = false;
-					
+                                    }
+                                    else{
+                                        Music sound = new Music(); 
+                                                        sound.setFile("pickheart.wav");
+                                                        sound.play();
+					x++;
+                                        
+                                        items[i].active = false;
+                                    }
 					
 					
 				}
