@@ -50,6 +50,7 @@ public class ObjectPool
         public static boolean powerup2 = false;
         public static boolean powerup3 = false;
         public static boolean powerup4 = false;
+   
         int counter = 0;
 	
 	ObjectPool()
@@ -657,11 +658,13 @@ public class ObjectPool
                                         Items.special=false;
                                         items[i].active = false;
                                     }
-                                    else{
+                                    else if (Items.heart==true){
                                         Music sound = new Music(); 
                                                         sound.setFile("pickheart.wav");
                                                         sound.play();
 					x++;
+                                       
+                                        Items.heart=false;
                                         
                                         items[i].active = false;
                                     }

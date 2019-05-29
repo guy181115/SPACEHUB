@@ -12,6 +12,9 @@ import java.util.logging.Logger;
 import static proj.KeyInput.pressed;
 import static proj.Title.image;
 import static proj.Enemy.boss;
+import static proj.Items.heart;
+import static proj.Items.shield;
+import static proj.ObjectPool.items;
 public class MyCanvas extends Canvas implements Runnable {
 
     ObjectPool objectpool;
@@ -188,8 +191,8 @@ public class MyCanvas extends Canvas implements Runnable {
         
         if(Level.getLevel()==5){
             boss = true;
-            Enemy.boss1 = true;
-            ObjectPool.newBoss1();
+            Enemy.boss2 = true;
+            ObjectPool.newBoss2();
            /* title.drawWin(gBuf);
             if (shotkey_state == SHOT_DOWN) {
                 Score.compareScore();
@@ -252,15 +255,29 @@ public class MyCanvas extends Canvas implements Runnable {
         objectpool.getColision();
         objectpool.movePlayer(keyinput);
 
-        if (counter % (280 - Level.getLevel() * 10) == 0 && boss == false&&Level.getLevel()<25) {
+        if (counter % (270 - Level.getLevel() * 10) == 0 && boss == false&&Level.getLevel()<25) {
             ObjectPool.newEnemy(100 + random.nextInt(300), 0);
+            
+                    
+        }
+        if (counter % (450 - Level.getLevel() * 10) == 0 && boss == false&&Level.getLevel()<25) {
+            ObjectPool.newEnemy(100 + random.nextInt(300), 0);
+            
+                    
+        }
+        if (counter % 100 == 0 && boss == false&&Level.getLevel()<25) {
+            ObjectPool.newEnemy(100 + random.nextInt(300), 0);
+            
+                    
         }
         
         if (counter % (800 - Level.getLevel() * 10) == 0 &&Level.getLevel()!=5&&
                 Level.getLevel()!=6&&Level.getLevel()!=7&&Level.getLevel()!=10&&
                 Level.getLevel()!=11&&Level.getLevel()!=12&&Level.getLevel()!=15&&
                 Level.getLevel()!=16&&Level.getLevel()!=17&&Level.getLevel()!=20&&
-                Level.getLevel()!=21&&Level.getLevel()!=22&&Level.getLevel()!=25) {
+                Level.getLevel()!=21&&Level.getLevel()!=22&&Level.getLevel()!=25&&
+                shield == false&&heart ==false&&ObjectPool.invulnerable!=true)
+        {
             ObjectPool.newItems(100 + random.nextInt(300), 0);
         }
 

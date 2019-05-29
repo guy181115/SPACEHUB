@@ -20,6 +20,7 @@ public class Items extends GameObject {
 	
 	boolean ishit = false;
 	public static boolean boss = false;
+        public static boolean heart = false;
         public static boolean shield = false;
         public static boolean special = false;
         public static boolean special2 = false;
@@ -68,31 +69,53 @@ public class Items extends GameObject {
 		{
 			case 0:
 				move_item0();
+                                heart = true;
+                                shield = false;
+                                special = false;
+                                special2 = false;
+                                special3 = false;
+                                special4 = false;   
 				break;
+                                
                         case 1:
                                 move_item0();
                                 shield = true;
+                                heart = false;
+                                special = false;
+                                special2 = false;
+                                special3 = false;
+                                special4 = false;        
 				break;
                         case 2:
                                 move_item0();
                                 shield = false;
+                                heart = false;
                                 special = true;
+                                special2 = false;
+                                special3 = false;
+                                special4 = false; 
 				break;       
                         case 3:
                                 move_item0();
+                                heart = false;
                                 shield = false;
                                 special = false;
                                 special2 = true;
+                                special3 = false;
+                                special4 = false; 
 				break;     
                         case 4:
                                 move_item0();
+                                heart = false;
                                 shield = false;
                                 special = false;
                                 special2 = false;
                                 special3 = true;
+                                special4 = false; 
 				break; 
                         case 5:
                                 move_item0();
+                                heart = false;
                                 shield = false;
                                 special = false;
                                 special2 = false;
