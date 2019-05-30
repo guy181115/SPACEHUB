@@ -23,6 +23,10 @@ public class Title
           Font infoFont4;
          Font titleFont2;
 	public static Image image;
+        public Rectangle playButton = new Rectangle(250, 150, 100, 50);
+    public Rectangle helpButton = new Rectangle(250, 250, 100, 50);
+    public Rectangle quitButton = new Rectangle(250, 350, 100, 50);
+        
 	
 	Title()
 	{
@@ -105,6 +109,29 @@ public class Title
                 g.drawString("Press space bar to main menu.",130,540);
             
         }
+        
+         public void drawMenu(Graphics g){
+             Graphics2D g2d = (Graphics2D) g;
+            Font fnt1 = new Font("arial", Font.BOLD, 30);
+        g.setFont(fnt1);
+        g.drawString("Play", playButton.x +20, playButton.y +35);
+        g2d.draw(playButton);
+        g.drawString("Help", helpButton.x +20, helpButton.y +35);
+        g2d.draw(helpButton);
+        g.drawString("Quit", quitButton.x +20, quitButton.y +35);
+        g2d.draw(quitButton);
+            
+        }
+         public void drawHelp(Graphics g){
+             
+                g.setFont(infoFont4);
+                g.drawString("Press space bar to main menu.",130,540);
+                g.setColor(Color.white);
+		g.setFont(infoFont3);
+                g.drawString("Press space bar to main menu.",130,540);
+            
+        }
+        
     
 }
 

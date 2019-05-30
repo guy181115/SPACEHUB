@@ -574,7 +574,9 @@ public class ObjectPool
 				
 				if (getDistance(player, enemy[i]) < DIST_PLAYER_TO_ENEMY&&invulnerable == false)
 				{
-					
+					Music sound = new Music(); 
+                                                        sound.setFile("8bit_bomb_explosion.wav");
+                                                        sound.play();
 					player.active = false;
 
 					
@@ -586,6 +588,9 @@ public class ObjectPool
 				}
                                else if (getDistance(player, enemy[i]) < DIST_PLAYER_TO_ENEMY&&invulnerable == true)
 				{
+                                    Music sound = new Music(); 
+                                                        sound.setFile("pickitemshield.wav");
+                                                        sound.play();
 					
 					y--;
                                         if(y==0)

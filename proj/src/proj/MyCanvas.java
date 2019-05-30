@@ -19,6 +19,7 @@ public class MyCanvas extends Canvas implements Runnable {
 
     ObjectPool objectpool;
     KeyInput keyinput;
+    MouseInput mouseinput;
     Image imgBuf;
     Graphics gBuf;
     Random random;
@@ -28,11 +29,11 @@ public class MyCanvas extends Canvas implements Runnable {
     private volatile boolean running = true;
     public static  boolean paused = false;
     public static Object pauseLock = new Object();
-    public int scene;
+    public static int scene;
     static final int SCENE_TITLE = 0;
-
+    static final int SCENE_MENU = 2;
     static final int SCENE_GAMEMAIN = 1;
-
+    static final int SCENE_HELP = 3;
     public boolean gameover;
     int counter;
 
@@ -42,12 +43,14 @@ public class MyCanvas extends Canvas implements Runnable {
 
     int shotkey_state;
     int pausekey_state;
-
-
+  
+    
     MyCanvas() {
 
-        keyinput = new KeyInput();  //เช็คว่ากดอะไร
+        keyinput = new KeyInput();  
+        mouseinput = new MouseInput();
         addKeyListener(keyinput);
+        addMouseListener(mouseinput);
         setFocusable(true);
         random = new Random();
         title = new Title();
@@ -61,6 +64,18 @@ public class MyCanvas extends Canvas implements Runnable {
         scene = SCENE_TITLE;
         gameover = false;
 
+        Level.initLevel();
+        ObjectPool.x = 30;
+        ObjectPool.y = 0;
+        Score.initScore();
+    }
+     public void init(int i) {
+        objectpool = new ObjectPool();
+        Score.loadScore();
+
+        scene = SCENE_MENU;
+        gameover = false;
+        MouseInput.state = 0;
         Level.initLevel();
         ObjectPool.x = 30;
         ObjectPool.y = 0;
@@ -90,8 +105,8 @@ public class MyCanvas extends Canvas implements Runnable {
 
             for (counter = 0;; counter++) {
                 shotkey_state = keyinput.checkShotKey();
-                pausekey_state = keyinput.checkESCKey();
-
+                 pausekey_state = keyinput.checkESCKey();
+                
                 gBuf.setColor(Color.white);
                 gBuf.fillRect(0, 0, 600, 600);
                
@@ -106,8 +121,11 @@ public class MyCanvas extends Canvas implements Runnable {
                         score.drawHiScore(gBuf);
 
                         if (shotkey_state == SHOT_DOWN) {
+                             Music sound = new Music();
+                                 sound.setFile("select01.wav");
+                            sound.play();
                              
-                            scene = SCENE_GAMEMAIN;
+                           scene = SCENE_MENU;
                         }
                         break;
 
@@ -115,6 +133,13 @@ public class MyCanvas extends Canvas implements Runnable {
                             
                         gameMain();
                         break;
+                    case 2:
+                        menu();
+                        break;
+                    case 3:
+                        help();
+                        break;
+                   
                 }
                 
                 repaint();
@@ -132,18 +157,60 @@ public class MyCanvas extends Canvas implements Runnable {
     
     @Override
     public void update(Graphics g) {
+           
         paint(g);
     }
 
-    
+    void menu(){
+        planet(gBuf);
+         title.drawMenu(gBuf);
+         Music sound = new Music(); 
+         
+        switch (MouseInput.state) {
+            case 1:
+               
+                            sound.setFile("select01.wav");
+                            sound.play();
+                scene = SCENE_GAMEMAIN;
+                break;
+            case 2:
+               
+                            sound.setFile("select01.wav");
+                            sound.play();
+                scene = SCENE_HELP;
+                break;
+            case 3:
+                sound.setFile("select01.wav");
+                            sound.play();
+                System.exit(0);
+            default:
+                break;
+        }
+    }
+    void help(){
+         help(gBuf);
+         title.drawHelp(gBuf);
+         Music sound = new Music();
+         if (shotkey_state == SHOT_DOWN) {
+                           sound.setFile("select01.wav");
+                            sound.play();
+               scene = SCENE_MENU;
+               MouseInput.state = 0;
+               
+            }
+         
+         
+    }
     
     void gameMain() {
-        
+       
         space(gBuf);
         hearts(gBuf);
         boss = false;
         if(paused == true){
-         
+           Music sound = new Music();
+                                 sound.setFile("select01.wav");
+                            sound.play();
          
               title.drawPausemenu(gBuf);
   
@@ -158,12 +225,15 @@ public class MyCanvas extends Canvas implements Runnable {
             title.drawGameover(gBuf);
             
             if (shotkey_state == SHOT_DOWN) {
+                Music sound = new Music();
+                sound.setFile("select01.wav");
+                            sound.play();
                 ObjectPool.powerup =false;
                 ObjectPool.y=0;
                 Items.special=false;
                 ObjectPool.x=3;
                 Score.compareScore();
-                init();
+                init(1);
                 ObjectPool.powerup2 =false;
                 ObjectPool.powerup4 = false;
                 ObjectPool.powerup3 = false;
@@ -176,12 +246,15 @@ public class MyCanvas extends Canvas implements Runnable {
                 
             
             if (shotkey_state == SHOT_DOWN) {
+                 Music sound = new Music();
+                sound.setFile("select01.wav");
+                            sound.play();
                 ObjectPool.powerup =false;
                 ObjectPool.y=0;
                 Items.special=false;
                 ObjectPool.x=3;
                 Score.compareScore();
-                init();
+                init(1);
                 ObjectPool.powerup2 =false;
                 ObjectPool.powerup4 = false;
                 ObjectPool.powerup3 = false;
@@ -321,6 +394,11 @@ public class MyCanvas extends Canvas implements Runnable {
          g.drawImage(image, 10, 490,(int)40,(int)40, this);
          g.drawString("X"+ObjectPool.x, 50, 516);
          }
+         public void help(Graphics g){
+              Toolkit toolkit = Toolkit.getDefaultToolkit();
+        image = toolkit.getImage("howtoplay.png");
+         g.drawImage(image, 0, -20,600,580, this);
+        }
     }
    
     

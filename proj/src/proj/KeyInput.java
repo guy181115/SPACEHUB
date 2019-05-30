@@ -75,7 +75,9 @@ public class KeyInput extends Thread implements KeyListener
                                   
 			}
 			else
-			{
+			{  Music sound = new Music();
+                                 sound.setFile("select01.wav");
+                            sound.play();
                                
 				paused = false;
 				keyesc = 1;
