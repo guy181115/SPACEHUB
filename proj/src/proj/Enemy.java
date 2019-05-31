@@ -58,12 +58,9 @@ public class Enemy extends GameObject
                 Str = 1; //Str 1 = 2 Shot 
                 if(Level.getLevel()>5&&Level.getLevel()<10)
 		Str = 5; //Str 1 = 2 Shot 
-               else if(Level.getLevel()>10&&Level.getLevel()<15)
-		Str = 10; //Str 1 = 2 Shot 
-               else if(Level.getLevel()>15&&Level.getLevel()<20)
-		Str = 15; //Str 1 = 2 Shot 
-               else if(Level.getLevel()>20)
-		Str = 20; //Str 1 = 2 Shot 
+               else if(Level.getLevel()>10)
+		Str = 8; //Str 1 = 2 Shot 
+              
 		counter = 0;
 		boolean ishit = false;
 		shootnum = Level.getLevel();
@@ -332,7 +329,7 @@ public class Enemy extends GameObject
 		if (startshoot)
 		{
                     
-                    if (((counter%40)==0))
+                    if (((counter%60)==0))
 			{
 				Bullet.FireAim3(x-25, y+80, player);
 				
@@ -358,7 +355,7 @@ public class Enemy extends GameObject
 		
 		if (startshoot)
 		{
-                    if (((counter%150)==0))
+                    if (((counter%200)==0))
 			{
 				Bullet.FireRound2(x-10, y+80);
 				

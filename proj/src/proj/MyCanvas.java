@@ -315,11 +315,7 @@ public class MyCanvas extends Canvas implements Runnable {
             
                     
         }
-        if (counter % 100 == 0 && boss == false&&Level.getLevel()<25) {
-            ObjectPool.newEnemy(100 + random.nextInt(300), 0);
-            
-                    
-        }
+       
         
         if (counter % (800 - Level.getLevel() * 10) == 0 &&Level.getLevel()!=5&&
                 Level.getLevel()!=6&&Level.getLevel()!=7&&Level.getLevel()!=10&&
