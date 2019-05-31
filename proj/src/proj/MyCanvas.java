@@ -11,6 +11,7 @@ import java.util.Random;
 import java.util.logging.Logger;
 import static proj.KeyInput.pressed;
 import static proj.Title.image;
+import static proj.Title.image2;
 import static proj.Enemy.boss;
 import static proj.Items.heart;
 import static proj.Items.shield;
@@ -188,16 +189,17 @@ public class MyCanvas extends Canvas implements Runnable {
         }
     }
     void help(){
-         help(gBuf);
-         title.drawHelp(gBuf);
+         help(gBuf); 
+         
+         title.drawHow(gBuf);
          Music sound = new Music();
-         if (shotkey_state == SHOT_DOWN) {
-                           sound.setFile("select01.wav");
+
+         if(MouseInput.state == 4){
+             sound.setFile("select01.wav");
                             sound.play();
-               scene = SCENE_MENU;
-               MouseInput.state = 0;
-               
-            }
+             scene = SCENE_MENU;
+             
+         }
          
          
     }
@@ -266,12 +268,7 @@ public class MyCanvas extends Canvas implements Runnable {
             boss = true;
             Enemy.boss2 = true;
             ObjectPool.newBoss2();
-           /* title.drawWin(gBuf);
-            if (shotkey_state == SHOT_DOWN) {
-                Score.compareScore();
-                init();
-
-            }*/
+      
         }
         
        
@@ -281,23 +278,13 @@ public class MyCanvas extends Canvas implements Runnable {
             boss = true;
             Enemy.boss2 = true;
             ObjectPool.newBoss2();
-           /* title.drawWin(gBuf);
-            if (shotkey_state == SHOT_DOWN) {
-                Score.compareScore();
-                init();
-
-            }*/
+        
         }
         if(Level.getLevel()==15){
             boss = true;
             Enemy.boss3 = true;
             ObjectPool.newBoss3();
-           /* title.drawWin(gBuf);
-            if (shotkey_state == SHOT_DOWN) {
-                Score.compareScore();
-                init();
-
-            }*/
+          
         }
         
         
@@ -305,23 +292,13 @@ public class MyCanvas extends Canvas implements Runnable {
             boss = true;
             Enemy.boss4 = true;
             ObjectPool.newBoss4();
-           /* title.drawWin(gBuf);
-            if (shotkey_state == SHOT_DOWN) {
-                Score.compareScore();
-                init();
-
-            }*/
+          
         }
         if(Level.getLevel()==25){
             boss = true;
             Enemy.boss5 = true;
             ObjectPool.newBoss5();
-           /* title.drawWin(gBuf);
-            if (shotkey_state == SHOT_DOWN) {
-                Score.compareScore();
-                init();
-
-            }*/
+        
         }
          
 
@@ -396,8 +373,10 @@ public class MyCanvas extends Canvas implements Runnable {
          }
          public void help(Graphics g){
               Toolkit toolkit = Toolkit.getDefaultToolkit();
-        image = toolkit.getImage("howtoplay.png");
-         g.drawImage(image, 0, -20,600,580, this);
+                image2 = toolkit.getImage("space.gif");
+        image = toolkit.getImage("howtoplayfinal.png");
+        g.drawImage(image2, 0, 0, this);
+         g.drawImage(image, 0, -20,560,580, this);
         }
     }
    

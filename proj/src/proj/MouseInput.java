@@ -9,6 +9,7 @@ public class MouseInput extends Thread implements MouseListener {
      boolean start = false;
     boolean quit = false;
    boolean help = false;
+   boolean esc = false;
     public static int state;
     MouseInput(){
         start = false;
@@ -63,7 +64,20 @@ public class MouseInput extends Thread implements MouseListener {
                 checkState();
             } 
         }
-
+//         public Rectangle escButton = new Rectangle(450, 10, 100, 50);
+//public Rectangle escButton = new Rectangle(530, 10, 40, 40);
+//        
+        //Esc Button
+        if(mx >= 530 && mx <= 550)
+        {
+            if(my >= 10 && my <= 50)
+            {
+                
+                state = 4;
+                esc = true;
+                checkState();
+            } 
+        }
 
 
     }
@@ -84,6 +98,11 @@ public class MouseInput extends Thread implements MouseListener {
 		{
 		help = false;
 
+		}
+               else if (esc==true)
+		{
+		esc = false;
+                 state = 4;
 		}
     }
 
@@ -113,6 +132,11 @@ public class MouseInput extends Thread implements MouseListener {
 		{
 		help = false;
                  state = 3;
+		}
+                   else if (esc==true)
+		{
+		esc = false;
+                 state = 4;
 		}
 		
 	}

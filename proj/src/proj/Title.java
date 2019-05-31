@@ -22,10 +22,19 @@ public class Title
          Font infoFont3;
           Font infoFont4;
          Font titleFont2;
+         Font infoFont5;
+         Font infoFont6;
+           Font fnt1;
 	public static Image image;
-        public Rectangle playButton = new Rectangle(250, 150, 100, 50);
+        public static Image image2;
+    public Rectangle playButton = new Rectangle(250, 150, 100, 50);
+     public Rectangle playButton1 = new Rectangle(249, 151, 102, 50);
     public Rectangle helpButton = new Rectangle(250, 250, 100, 50);
+    public Rectangle helpButton1 = new Rectangle(249, 251, 102, 50);
     public Rectangle quitButton = new Rectangle(250, 350, 100, 50);
+    public Rectangle quitButton1 = new Rectangle(249, 351, 102, 50);
+    public Rectangle escButton = new Rectangle(530, 10, 40, 40);
+
         
 	
 	Title()
@@ -37,6 +46,9 @@ public class Title
                 infoFont2 = new Font("Monospaced", Font.BOLD, 30);
                 infoFont3 = new Font("Monospaced", Font.PLAIN, 20);
                 infoFont4 = new Font("Monospaced", Font.BOLD, 20);
+                infoFont5 = new Font("Monospaced", Font.PLAIN, 40);
+                infoFont6 = new Font("Monospaced", Font.BOLD, 40);
+                fnt1 = new Font("arial", Font.BOLD, 30);
 	}
 	
 	
@@ -112,14 +124,27 @@ public class Title
         
          public void drawMenu(Graphics g){
              Graphics2D g2d = (Graphics2D) g;
-            Font fnt1 = new Font("arial", Font.BOLD, 30);
-        g.setFont(fnt1);
-        g.drawString("Play", playButton.x +20, playButton.y +35);
+          
+             g.setColor(Color.black);
+        g.setFont(infoFont6);
+        g.drawString("Play", playButton.x +3, playButton.y +35);
+        g.setFont(infoFont5);
+        g.drawString("Play", playButton.x +3, playButton.y +35);
         g2d.draw(playButton);
-        g.drawString("Help", helpButton.x +20, helpButton.y +35);
+         g2d.draw(playButton1);
+        
+         g.setFont(infoFont6);
+        g.drawString("Help", helpButton.x +3, helpButton.y +35);
+        g.setFont(infoFont5);
+        g.drawString("Help", helpButton.x +3, helpButton.y +35);
         g2d.draw(helpButton);
-        g.drawString("Quit", quitButton.x +20, quitButton.y +35);
+         g2d.draw(helpButton1);
+       g.setFont(infoFont6);
+        g.drawString("Quit", quitButton.x +3, quitButton.y +35);
+         g.setFont(infoFont5);
+        g.drawString("Quit", quitButton.x +3, quitButton.y +35);
         g2d.draw(quitButton);
+         g2d.draw(quitButton1);
             
         }
          public void drawHelp(Graphics g){
@@ -131,6 +156,17 @@ public class Title
                 g.drawString("Press space bar to main menu.",130,540);
             
         }
+          public void drawHow(Graphics g){
+               Graphics2D g2d = (Graphics2D) g;
+           
+        g.setFont(fnt1);
+        g.setColor(Color.red);
+        g.drawString("X", escButton.x +11 , escButton.y +30);
+        g.setColor(Color.white);
+        g2d.draw(escButton);
+              
+          
+          }
         
     
 }
